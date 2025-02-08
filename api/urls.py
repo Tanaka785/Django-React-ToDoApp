@@ -1,7 +1,7 @@
 from django.urls import path 
 from . import views 
 
-app_name = "frontend"
+app_name = "api"
 
 urlpatterns = [
     path('tasks', views.TaskSerializer.as_view(), name="create-task"),
