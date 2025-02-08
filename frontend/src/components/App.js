@@ -3,15 +3,17 @@ import { createRoot } from "react-dom/client";
 import Homepage from "./Homepage";
 
 export default class App extends Component {
-    constructor(props) {
-        super(props);
-    }
+  constructor(props) {
+    super(props);
+  }
 
-    render() {
-        return (
-            <h1>Testing React Code</h1>
-        )
-    }
+  render() {
+    return (
+      <div>
+        <Homepage />
+      </div>
+    );
+  }
 }
 
 const appDiv = document.getElementById("app");
