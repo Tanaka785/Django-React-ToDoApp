@@ -24,9 +24,11 @@ export default class Homepage extends Component {
 
   renderHomepage() {
     return (
-      <Grid2 container direction={"column"} spacing={1}>
-        <Grid2 xs={12} align="center" style={{ padding: "20px" }}>
-          <Typography component={"h1"}>TO-DO</Typography>
+      <Grid2 container direction={"column"} spacing={2}>
+        <Grid2 xs={12} align="center">
+          <Typography component={"h1"}>
+            <b>TO-DO</b>
+          </Typography>
         </Grid2>
         <Grid2 xs={12} align="center">
           <FormControl>
