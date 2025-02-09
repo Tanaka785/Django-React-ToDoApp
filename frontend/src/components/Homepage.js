@@ -33,18 +33,23 @@ export default class Homepage extends Component {
             <b>TO-DO</b>
           </Typography>
         </Grid2>
-        <Grid2 container direction={"row"}>
-          <Grid2 xs={8}>
-            <FormControl>
+        <Grid2 container direction={"row"} sx={{ width: "100%" }}>
+          <Grid2 xs={8} sx={{ width: "80%" }}>
+            <FormControl sx={{ width: "100%" }}>
               <TextField
                 required={true}
                 label="Add New Task"
                 value={this.state.task}
+                sx={{ width: "100%" }}
               />
             </FormControl>
           </Grid2>
-          <Grid2 xs={4}>
-            <Button variant="contained" color="primary">
+          <Grid2 xs={4} align="center">
+            <Button
+              variant="contained"
+              color="primary"
+              sx={{ height: "97%", padding: "14px" }}
+            >
               Add Task
             </Button>
           </Grid2>
