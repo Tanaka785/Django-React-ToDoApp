@@ -19,6 +19,9 @@ import {
 export default class Homepage extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      task: "",
+    };
     this.renderHomepage = this.renderHomepage.bind(this);
   }
 
@@ -32,7 +35,11 @@ export default class Homepage extends Component {
         </Grid2>
         <Grid2 xs={12} align="center">
           <FormControl>
-            <TextField required={true} label="Add New Task" />
+            <TextField
+              required={true}
+              label="Add New Task"
+              value={this.state.task}
+            />
             <Button variant="contained" color="primary">
               Add Task
             </Button>
