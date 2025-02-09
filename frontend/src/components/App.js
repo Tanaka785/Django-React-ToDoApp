@@ -11,7 +11,7 @@ function App() {
         border: "1px solid",
         borderColor: "primary.main",
         borderRadius: "4px",
-        boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
+        boxShadow: "0px 0px 14px rgba(119, 136, 153, 0.5)",
       }}
     >
       <Homepage />
