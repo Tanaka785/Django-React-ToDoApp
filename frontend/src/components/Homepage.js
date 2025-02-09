@@ -10,13 +10,18 @@ import {
 export default class Homepage extends Component {
   constructor(props) {
     super(props);
+    this.renderHomepage = this.renderHomepage.bind(this);
+  }
+
+  renderHomepage() {
+    alert();
   }
 
   render() {
     return (
       <Router>
         <Routes>
-          <Route path="/" element={<p>This is the Homepage.</p>} />
+          <Route path="/" element={<this.renderHomepage/>} />
         </Routes>
       </Router>
     );
