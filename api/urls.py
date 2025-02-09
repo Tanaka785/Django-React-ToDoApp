@@ -4,6 +4,6 @@ from . import views
 app_name = "api"
 
 urlpatterns = [
-    path('tasks', views.TaskSerializer.as_view(), name="create-task"),
+    path('tasks', views.TaskSerializerView.as_view(), name="create-task"),
     path('create-task', views.CreateTask.as_view(), name="create-task"),
 ]
