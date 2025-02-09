@@ -66,7 +66,12 @@ export default class Homepage extends Component {
 
   renderHomepage() {
     return (
-      <Grid2 container direction={"column"} spacing={1}>
+      <Grid2
+        container
+        direction={"column"}
+        spacing={1}
+        sx={{ width: "100%", height: "100%" }}
+      >
         <Grid2 xs={12} align="center">
           <Typography component={"h1"}>
             <b>TO-DO</b>
@@ -88,11 +93,17 @@ export default class Homepage extends Component {
               />
             </FormControl>
           </Grid2>
-          <Grid2 xs={4} align="center">
+          <Grid2
+            xs={4}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
             <Button
               variant="contained"
               color="primary"
-              sx={{ height: "97%", padding: "14px" }}
+              sx={{ height: "54px", padding: "25px" }}
               onClick={this.addNewTask}
             >
               Add Task
