@@ -35,8 +35,14 @@ export default class Homepage extends Component {
     });
   }
 
-  addNewTask() {
-    alert();
+  addNewTask(event) {
+    if (event.key === "Enter") {
+      if (this.state.task === "") {
+        // the task field is not empty.
+      } else {
+        // the task field is empty.
+      }
+    }
   }
 
   renderHomepage() {
@@ -65,6 +71,7 @@ export default class Homepage extends Component {
               variant="contained"
               color="primary"
               sx={{ height: "97%", padding: "14px" }}
+              onClick={this.addNewTask}
             >
               Add Task
             </Button>
