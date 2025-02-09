@@ -6,6 +6,15 @@ import {
   Navigate,
   Link,
 } from "react-router-dom";
+import {
+  Typography,
+  Button,
+  Grid2,
+  FormControl,
+  FormControlLabel,
+  FormHelperText,
+  TextField,
+} from "@mui/material";
 
 export default class Homepage extends Component {
   constructor(props) {
@@ -14,14 +23,28 @@ export default class Homepage extends Component {
   }
 
   renderHomepage() {
-    alert();
+    return (
+      <Grid2 container direction={"column"} spacing={1}>
+        <Grid2 xs={12} align="center" style={{ padding: "20px" }}>
+          <Typography component={"h1"}>TO-DO</Typography>
+        </Grid2>
+        <Grid2 xs={12} align="center">
+          <FormControl>
+            <TextField required={true} label="Add New Task" />
+            <Button variant="contained" color="primary">
+              Add Task
+            </Button>
+          </FormControl>
+        </Grid2>
+      </Grid2>
+    );
   }
 
   render() {
     return (
       <Router>
         <Routes>
-          <Route path="/" element={<this.renderHomepage/>} />
+          <Route path="/" element={<this.renderHomepage />} />
         </Routes>
       </Router>
     );
