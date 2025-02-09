@@ -9,7 +9,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="center" style={{ border: '1px solid blue'}}>
         <Homepage />
       </div>
     );
