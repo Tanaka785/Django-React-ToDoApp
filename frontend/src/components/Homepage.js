@@ -37,11 +37,24 @@ export default class Homepage extends Component {
   }
 
   addNewTask(event) {
-    if (event.key === "Enter") {
-      if (this.state.task === "") {
-        // the task field is not empty.
+    if (event.key === "Enter" || event.type === "click") {
+      if (this.state.task.trim() !== "") {
+        const requestOptions = {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            task: this.state.task,
+          }),
+        };
+        fetch("/api/create-task", requestOptions)
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+          });
       } else {
-        // the task field is empty.
+        this.setState({
+          error: "Task Required",
+        });
       }
     }
   }
@@ -53,7 +66,7 @@ export default class Homepage extends Component {
 
   renderHomepage() {
     return (
-      <Grid2 container direction={"column"} spacing={2}>
+      <Grid2 container direction={"column"} spacing={1}>
         <Grid2 xs={12} align="center">
           <Typography component={"h1"}>
             <b>TO-DO</b>
@@ -65,10 +78,13 @@ export default class Homepage extends Component {
               <TextField
                 required={true}
                 label="Add New Task"
+                error={this.state.error}
+                helperText={this.state.error}
+                variant="outlined"
                 value={this.state.task}
                 sx={{ width: "100%" }}
                 onChange={this.updateTask}
-                onKeyPress={this.addNewTask}
+                onKeyDown={this.addNewTask}
               />
             </FormControl>
           </Grid2>
@@ -82,7 +98,6 @@ export default class Homepage extends Component {
               Add Task
             </Button>
           </Grid2>
-          /
         </Grid2>
         <Grid2 xs={12} align="center">
           {/* loop around all the tasks and display them, each inside its Grid item */}
