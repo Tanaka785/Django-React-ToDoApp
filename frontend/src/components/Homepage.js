@@ -33,17 +33,21 @@ export default class Homepage extends Component {
             <b>TO-DO</b>
           </Typography>
         </Grid2>
-        <Grid2 xs={12} align="center">
-          <FormControl>
-            <TextField
-              required={true}
-              label="Add New Task"
-              value={this.state.task}
-            />
+        <Grid2 container direction={"row"}>
+          <Grid2 xs={8}>
+            <FormControl>
+              <TextField
+                required={true}
+                label="Add New Task"
+                value={this.state.task}
+              />
+            </FormControl>
+          </Grid2>
+          <Grid2 xs={4}>
             <Button variant="contained" color="primary">
               Add Task
             </Button>
-          </FormControl>
+          </Grid2>
         </Grid2>
       </Grid2>
     );
