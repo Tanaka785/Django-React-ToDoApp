@@ -21,8 +21,17 @@ export default class Homepage extends Component {
     super(props);
     this.state = {
       task: "",
+      error: "",
     };
     this.renderHomepage = this.renderHomepage.bind(this);
+    this.updateTask = this.updateTask.bind(this);
+  }
+
+  updateTask(e) {
+    this.setState({
+      ...this.state,
+      task: e.target.value,
+    });
   }
 
   renderHomepage() {
@@ -41,6 +50,7 @@ export default class Homepage extends Component {
                 label="Add New Task"
                 value={this.state.task}
                 sx={{ width: "100%" }}
+                onChange={this.updateTask}
               />
             </FormControl>
           </Grid2>
