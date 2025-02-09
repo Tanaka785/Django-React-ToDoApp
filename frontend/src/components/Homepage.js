@@ -22,6 +22,7 @@ export default class Homepage extends Component {
     this.state = {
       task: "",
       error: "",
+      tasks: [],
     };
     this.renderHomepage = this.renderHomepage.bind(this);
     this.updateTask = this.updateTask.bind(this);
@@ -43,6 +44,11 @@ export default class Homepage extends Component {
         // the task field is empty.
       }
     }
+  }
+
+  // get all the tasks
+  async componentDidMount() {
+    alert();
   }
 
   renderHomepage() {
@@ -76,6 +82,10 @@ export default class Homepage extends Component {
               Add Task
             </Button>
           </Grid2>
+          /
+        </Grid2>
+        <Grid2 xs={12} align="center">
+          {/* loop around all the tasks and display them, each inside its Grid item */}
         </Grid2>
       </Grid2>
     );
