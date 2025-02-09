@@ -34,6 +34,10 @@ export default class Homepage extends Component {
     });
   }
 
+  addNewTask() {
+    alert();
+  }
+
   renderHomepage() {
     return (
       <Grid2 container direction={"column"} spacing={2}>
@@ -51,6 +55,7 @@ export default class Homepage extends Component {
                 value={this.state.task}
                 sx={{ width: "100%" }}
                 onChange={this.updateTask}
+                onKeyPress={this.addNewTask}
               />
             </FormControl>
           </Grid2>
