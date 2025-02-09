@@ -50,6 +50,10 @@ export default class Homepage extends Component {
           .then((response) => response.json())
           .then((data) => {
             console.log(data);
+            this.setState({
+              ...this.state,
+              task: ""
+            })
           });
       } else {
         this.setState({
