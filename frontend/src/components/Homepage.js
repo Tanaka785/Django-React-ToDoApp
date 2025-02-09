@@ -43,7 +43,7 @@ export default class Homepage extends Component {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            task: this.state.task,
+            title: this.state.task,
           }),
         };
         fetch("/api/create-task", requestOptions)
