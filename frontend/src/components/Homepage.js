@@ -52,8 +52,8 @@ export default class Homepage extends Component {
             console.log(data);
             this.setState({
               ...this.state,
-              task: ""
-            })
+              task: "",
+            });
           });
       } else {
         this.setState({
@@ -65,7 +65,18 @@ export default class Homepage extends Component {
 
   // get all the tasks
   async componentDidMount() {
-    alert();
+    fetch("/api/tasks")
+      .then((response) => response.json())
+      .then((data) => {
+        this.setState(
+          {
+            tasks: data,
+          },
+          () => {
+            console.log(this.state.tasks);
+          }
+        );
+      });
   }
 
   renderHomepage() {
@@ -76,7 +87,7 @@ export default class Homepage extends Component {
         spacing={1}
         sx={{ width: "100%", height: "100%" }}
       >
-        <Grid2 xs={12} align="center">
+        <Grid2 xs={12} align="start">
           <Typography component={"h1"}>
             <b>TO-DO</b>
           </Typography>
@@ -115,7 +126,8 @@ export default class Homepage extends Component {
           </Grid2>
         </Grid2>
         <Grid2 xs={12} align="center">
-          {/* loop around all the tasks and display them, each inside its Grid item */}
+          {/* display the three tasks, each in its own grid */}
+          <Grid2 xs={12}></Grid2>
         </Grid2>
       </Grid2>
     );
