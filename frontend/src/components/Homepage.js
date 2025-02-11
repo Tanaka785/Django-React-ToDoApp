@@ -29,6 +29,7 @@ export default class Homepage extends Component {
     this.updateTask = this.updateTask.bind(this);
     this.addNewTask = this.addNewTask.bind(this);
     this.setCheckBoxState = this.setCheckBoxState.bind(this);
+    this.markTaskAsCompleted = this.markTaskAsCompleted.bind(this);
   }
 
   updateTask(e) {
@@ -52,12 +53,15 @@ export default class Homepage extends Component {
           .then((response) => response.json())
           .then((data) => {
             console.log(data);
-            this.setState({
-              ...this.state,
-              task: "",
-            }, () => {
-              this.componentDidMount();
-            });
+            this.setState(
+              {
+                ...this.state,
+                task: "",
+              },
+              () => {
+                this.componentDidMount();
+              }
+            );
           });
       } else {
         this.setState({
@@ -89,15 +93,33 @@ export default class Homepage extends Component {
     updatedTasks.forEach((task) => {
       if (task.id === parseInt(taskId)) {
         task.completed = event.target.checked;
+        {this.markTaskAsCompleted(task)}
       }
     });
     this.setState({
       ...this.state,
       tasks: updatedTasks,
     });
+
     console.log(this.state.tasks);
   }
 
+  markTaskAsCompleted(task) {
+    if (task.completed === true) {
+      // update task through the backend.
+      const requestOptions = {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        task_id: task.id
+      };
+      fetch(`/api/${task_id}/update`, requestOptions)
+      .then(response => response.json())
+        .then(result => {
+          console.log(result);
+      })
+    }
+  }
+  
   renderHomepage() {
     return (
       <Grid2
