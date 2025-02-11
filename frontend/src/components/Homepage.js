@@ -189,6 +189,7 @@ export default class Homepage extends Component {
               xs={12}
               sx={{
                 display: "flex",
+                flexWrap: 'wrap',
                 alignItems: "center",
                 marginBottom: "10px",
                 borderBottom: "1px solid",
