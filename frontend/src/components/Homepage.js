@@ -87,14 +87,23 @@ export default class Homepage extends Component {
         container
         direction={"column"}
         spacing={1}
-        sx={{ width: "100%", height: "100%" }}
+        sx={{
+          display: "flex",
+          flexWrap: "wrap",
+          width: "100%",
+          height: "100%",
+        }}
       >
         <Grid2 xs={12} align="start">
           <Typography component={"h1"}>
             <b>TO-DO</b>
           </Typography>
         </Grid2>
-        <Grid2 container direction={"row"} sx={{ width: "100%" }}>
+        <Grid2
+          container
+          direction={"row"}
+          sx={{ display: "flex", width: "100%" }}
+        >
           <Grid2 xs={8} sx={{ width: "80%" }}>
             <FormControl sx={{ width: "100%" }}>
               <TextField
@@ -127,37 +136,54 @@ export default class Homepage extends Component {
             </Button>
           </Grid2>
         </Grid2>
-        <Grid2 xs={12}>
-          {this.state.tasks.map((task, index) => (
+        <Grid2 xs={12} sx={{ width: "100%", display: "block" }}>
+          {this.state.tasks.slice(0, 3).map((task, index) => (
             <Grid2
               container
               direction={"row"}
               key={task.id}
               xs={12}
               sx={{
+                display: "flex",
+                alignItems: "center",
                 marginBottom: "10px",
-                border: "1px solid",
-                borderColor: "blue",
-                padding: "10px",
+                borderBottom: "1px solid",
+                borderColor: "lightgray",
+                boxShadow: "0px 4px 4px rgba(119, 136, 153, 0.5)",
                 width: "98.5%",
                 borderRadius: "5px",
               }}
             >
-              <Grid2>
+              <Grid2 xs={3} sx={{ width: "10%" }}>
                 <Checkbox
+                  checked={this.state.completed}
                   inputProps={{ "aria-label": "controlled checkbox" }}
                 />
               </Grid2>
-              <Grid2 align="center">
+              <Grid2 xs={6} sx={{ width: "60%" }}>
                 <Typography variant="h6">{task.title}</Typography>
               </Grid2>
-              <Grid2 align="center">
-                <Button variant="contained" sx={{ backgroundColor: "red" }}>
+              <Grid2 sx={{ textAlign: "center", width: "30%", textAlign: 'end' }}>
+                <Button
+                  variant="contained"
+                  sx={{ border: "none", color: "red", backgroundColor: 'white' }}
+                >
                   DELETE
                 </Button>
+                {/* <Typography
+                  variant="h6"
+                  sx={{ textAlign: "end",paddingRight: '5px', color: "red" }}
+                >
+                  DELETE
+                </Typography> */}
               </Grid2>
             </Grid2>
           ))}
+          <Grid2 xs={12} sx={{ textAlign: "center" }}>
+            <Typography component={Link} to="/tasks">
+              View All Tasks
+            </Typography>
+          </Grid2>
         </Grid2>
       </Grid2>
     );
