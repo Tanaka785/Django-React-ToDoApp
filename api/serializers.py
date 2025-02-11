@@ -6,3 +6,11 @@ class TaskSerializer(serializers.ModelSerializer):
         model = Task 
         fields = "__all__"
             
+
+class UpdateTaskSerializer(serializers.ModelSerializer):
+    class Meta: 
+        model = Task 
+        fields = [
+            'completed'
+        ]            
+            
