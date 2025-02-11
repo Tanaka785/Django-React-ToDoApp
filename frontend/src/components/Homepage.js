@@ -14,6 +14,7 @@ import {
   FormControlLabel,
   FormHelperText,
   TextField,
+  Checkbox,
 } from "@mui/material";
 
 export default class Homepage extends Component {
@@ -21,6 +22,7 @@ export default class Homepage extends Component {
     super(props);
     this.state = {
       task: "",
+      completed: false,
       error: "",
       tasks: [],
     };
@@ -125,9 +127,37 @@ export default class Homepage extends Component {
             </Button>
           </Grid2>
         </Grid2>
-        <Grid2 xs={12} align="center">
-          {/* display the three tasks, each in its own grid */}
-          <Grid2 xs={12}></Grid2>
+        <Grid2 xs={12}>
+          {this.state.tasks.map((task, index) => (
+            <Grid2
+              container
+              direction={"row"}
+              key={task.id}
+              xs={12}
+              sx={{
+                marginBottom: "10px",
+                border: "1px solid",
+                borderColor: "blue",
+                padding: "10px",
+                width: "98.5%",
+                borderRadius: "5px",
+              }}
+            >
+              <Grid2>
+                <Checkbox
+                  inputProps={{ "aria-label": "controlled checkbox" }}
+                />
+              </Grid2>
+              <Grid2 align="center">
+                <Typography variant="h6">{task.title}</Typography>
+              </Grid2>
+              <Grid2 align="center">
+                <Button variant="contained" sx={{ backgroundColor: "red" }}>
+                  DELETE
+                </Button>
+              </Grid2>
+            </Grid2>
+          ))}
         </Grid2>
       </Grid2>
     );
