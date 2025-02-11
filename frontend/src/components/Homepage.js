@@ -22,7 +22,6 @@ export default class Homepage extends Component {
     super(props);
     this.state = {
       task: "",
-      completed: false,
       error: "",
       tasks: [],
     };
@@ -86,11 +85,18 @@ export default class Homepage extends Component {
   }
 
   setCheckBoxState(event) {
-    alert(event.target.value);
+    const taskId = event.target.value;
+    let updatedTasks = this.state.tasks;
+    updatedTasks.forEach((task) => {
+      if (task.id === parseInt(taskId)) {
+        task.completed = event.target.checked;
+      }
+    });
     this.setState({
       ...this.state,
-      completed: event.target.checked,
+      tasks: updatedTasks,
     });
+    console.log(this.state.tasks);
   }
 
   renderHomepage() {
@@ -169,7 +175,7 @@ export default class Homepage extends Component {
               <Grid2 xs={3} sx={{ width: "10%" }}>
                 <Checkbox
                   id={task.id}
-                  checked={this.state.completed}
+                  checked={task.completed}
                   inputProps={{ "aria-label": "Mark task as completed" }}
                   value={task.id}
                   onChange={this.setCheckBoxState}
