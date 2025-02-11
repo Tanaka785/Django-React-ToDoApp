@@ -22,7 +22,7 @@ export default class Homepage extends Component {
     super(props);
     this.state = {
       task: "",
-      completed: false,
+      completed: on,
       error: "",
       tasks: [],
     };
