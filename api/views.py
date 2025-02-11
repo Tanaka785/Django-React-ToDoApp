@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics, status 
 from .models import Task 
-from .serializers import TaskSerializer 
+from .serializers import TaskSerializer, UpdateTaskSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.http import JsonResponse
