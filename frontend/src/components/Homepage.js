@@ -110,7 +110,8 @@ export default class Homepage extends Component {
       const requestOptions = {
         method: "POST",
         headers: { 'Content-Type': 'application/json' },
-        task_id: task.id
+        task_id: task.id,
+        completed: true
       };
       fetch(`/api/${task_id}/update`, requestOptions)
       .then(response => response.json())
@@ -119,7 +120,7 @@ export default class Homepage extends Component {
       })
     }
   }
-  
+
   renderHomepage() {
     return (
       <Grid2
