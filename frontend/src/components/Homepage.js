@@ -29,6 +29,7 @@ export default class Homepage extends Component {
     this.renderHomepage = this.renderHomepage.bind(this);
     this.updateTask = this.updateTask.bind(this);
     this.addNewTask = this.addNewTask.bind(this);
+    this.setCheckBoxState = this.setCheckBoxState.bind(this);
   }
 
   updateTask(e) {
@@ -56,6 +57,7 @@ export default class Homepage extends Component {
               ...this.state,
               task: "",
             });
+            {this.componentDidMount()}
           });
       } else {
         this.setState({
@@ -79,6 +81,20 @@ export default class Homepage extends Component {
           }
         );
       });
+  }
+
+  setCheckBoxState(event) {
+    if (event.target.value === "on") {
+      this.setState({
+        ...this.state,
+        completed: true
+      })
+    } else {
+      this.setState({
+        ...this.state,
+        completed: false,
+      });
+    }
   }
 
   renderHomepage() {
@@ -149,7 +165,7 @@ export default class Homepage extends Component {
                 marginBottom: "10px",
                 borderBottom: "1px solid",
                 borderColor: "lightgray",
-                boxShadow: "0px 4px 4px rgba(119, 136, 153, 0.5)",
+                boxShadow: "0px 2px 2px rgba(119, 136, 153, 0.5)",
                 width: "98.5%",
                 borderRadius: "5px",
               }}
@@ -157,25 +173,26 @@ export default class Homepage extends Component {
               <Grid2 xs={3} sx={{ width: "10%" }}>
                 <Checkbox
                   checked={this.state.completed}
-                  inputProps={{ "aria-label": "controlled checkbox" }}
+                  inputProps={{ "aria-label": "Mark task as completed" }}
+                  onChange={this.setCheckBoxState}
                 />
               </Grid2>
               <Grid2 xs={6} sx={{ width: "60%" }}>
                 <Typography variant="h6">{task.title}</Typography>
               </Grid2>
-              <Grid2 sx={{ textAlign: "center", width: "30%", textAlign: 'end' }}>
+              <Grid2
+                sx={{ textAlign: "center", width: "30%", textAlign: "end" }}
+              >
                 <Button
                   variant="contained"
-                  sx={{ border: "none", color: "red", backgroundColor: 'white' }}
+                  sx={{
+                    border: "none",
+                    color: "red",
+                    backgroundColor: "white",
+                  }}
                 >
                   DELETE
                 </Button>
-                {/* <Typography
-                  variant="h6"
-                  sx={{ textAlign: "end",paddingRight: '5px', color: "red" }}
-                >
-                  DELETE
-                </Typography> */}
               </Grid2>
             </Grid2>
           ))}
