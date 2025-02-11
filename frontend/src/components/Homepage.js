@@ -22,7 +22,7 @@ export default class Homepage extends Component {
     super(props);
     this.state = {
       task: "",
-      completed: on,
+      completed: false,
       error: "",
       tasks: [],
     };
@@ -57,7 +57,9 @@ export default class Homepage extends Component {
               ...this.state,
               task: "",
             });
-            {this.componentDidMount()}
+            {
+              this.componentDidMount();
+            }
           });
       } else {
         this.setState({
@@ -84,17 +86,11 @@ export default class Homepage extends Component {
   }
 
   setCheckBoxState(event) {
-    if (event.target.value === "on") {
-      this.setState({
-        ...this.state,
-        completed: true
-      })
-    } else {
-      this.setState({
-        ...this.state,
-        completed: false,
-      });
-    }
+    this.setState({
+      ...this.state,
+      completed: event.target.value
+    });
+    alert(this.state.completed)
   }
 
   renderHomepage() {
@@ -164,7 +160,7 @@ export default class Homepage extends Component {
                 alignItems: "center",
                 marginBottom: "10px",
                 borderBottom: "1px solid",
-                borderColor: "lightgray",
+                borderColor: "whitesmoke",
                 boxShadow: "0px 2px 2px rgba(119, 136, 153, 0.5)",
                 width: "98.5%",
                 borderRadius: "5px",
