@@ -23,7 +23,6 @@ class CreateTask(APIView):
         serializer = self.serializer_class(data=request.data)
         print(serializer.initial_data)
         if serializer.is_valid():
-            print("yes")
             task = serializer.data.get("title")
             # create the task.
             task = Task(title=task)
