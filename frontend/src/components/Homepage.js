@@ -93,7 +93,9 @@ export default class Homepage extends Component {
     updatedTasks.forEach((task) => {
       if (task.id === parseInt(taskId)) {
         task.completed = event.target.checked;
-        {this.markTaskAsCompleted(task)}
+        {
+          this.markTaskAsCompleted(task);
+        }
       }
     });
     this.setState({
@@ -109,15 +111,17 @@ export default class Homepage extends Component {
       // update task through the backend.
       const requestOptions = {
         method: "POST",
-        headers: { 'Content-Type': 'application/json' },
-        task_id: task.id,
-        completed: true
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          task_id: task.id,
+          completed: true,
+        }),
       };
-      fetch(`/api/${task_id}/update`, requestOptions)
-      .then(response => response.json())
-        .then(result => {
+      fetch(`/api/${task.id}/update`, requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
           console.log(result);
-      })
+        });
     }
   }
 
