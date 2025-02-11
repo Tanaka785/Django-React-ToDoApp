@@ -5,6 +5,7 @@ from django.utils import timezone
 class Task(models.Model):
     title = models.CharField(max_length=176)
     created_at = models.DateTimeField(auto_now_add=True)
+    completed = models.BooleanField(default=False)
     
     class Meta: 
         ordering = ["-created_at"]
