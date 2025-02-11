@@ -86,11 +86,11 @@ export default class Homepage extends Component {
   }
 
   setCheckBoxState(event) {
+    alert(event.target.value);
     this.setState({
       ...this.state,
-      completed: event.target.value
+      completed: event.target.checked,
     });
-    alert(this.state.completed)
   }
 
   renderHomepage() {
@@ -168,8 +168,10 @@ export default class Homepage extends Component {
             >
               <Grid2 xs={3} sx={{ width: "10%" }}>
                 <Checkbox
+                  id={task.id}
                   checked={this.state.completed}
                   inputProps={{ "aria-label": "Mark task as completed" }}
+                  value={task.id}
                   onChange={this.setCheckBoxState}
                 />
               </Grid2>
