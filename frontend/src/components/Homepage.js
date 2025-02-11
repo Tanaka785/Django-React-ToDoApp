@@ -55,10 +55,9 @@ export default class Homepage extends Component {
             this.setState({
               ...this.state,
               task: "",
-            });
-            {
+            }, () => {
               this.componentDidMount();
-            }
+            });
           });
       } else {
         this.setState({
