@@ -5,8 +5,8 @@ from .serializers import TaskSerializer, UpdateTaskSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.http import JsonResponse
+from django.core.exceptions import ObjectDoesNotExist
 
-# Create your views here.
 class TaskSerializerView(generics.ListAPIView):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
@@ -54,5 +54,18 @@ class UpdateTask(APIView):
             return Response({'Bad Request': 'Invalid task id passed.'}, status=status.HTTP_404_NOT_FOUND)
         return Response({'Bad Request': 'Invalid data passed.'}, status=status.HTTP_400_BAD_REQUEST)
 
+class DeleteTask(APIView):
+    serializer_class = TaskSerializer 
+
+    def post(self, request, format=None):
+        if not self.request.session.exists(self.request.session.session_key):
+            self.request.session.create()
+
+        task_id = request.data.get("id")
+        try: 
+            task = Task.objects.get(id=task_id)
+        except ObjectDoesNotExist:
+
+    
 
 
