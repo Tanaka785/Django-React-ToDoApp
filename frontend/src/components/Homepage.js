@@ -73,6 +73,9 @@ export default class Homepage extends Component {
     }
   }
 
+  deleteTask() {
+    alert();
+  }
   // get all the tasks
   async componentDidMount() {
     fetch("/api/tasks")
@@ -232,6 +235,7 @@ export default class Homepage extends Component {
               <Typography variant="h6">{task.title}</Typography>
               <Button
                 variant="text"
+                onClick={this.deleteTask}
                 // startIcon={<DeleteIcon />}
                 sx={{
                   color: "red",
