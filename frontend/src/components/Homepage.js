@@ -27,7 +27,6 @@ export default class Homepage extends Component {
       tasks: [],
       completedTasks: [],
       activeTasks: [],
-      
     };
     this.renderHomepage = this.renderHomepage.bind(this);
     this.updateTask = this.updateTask.bind(this);
@@ -84,9 +83,25 @@ export default class Homepage extends Component {
             tasks: data,
           },
           () => {
-            // console.log(this.state.tasks);
+            this.state.tasks.forEach((task) => {
+              if (task.completed === true) {
+                // add task to completed tasks.
+                this.setState({
+                  ...this.state,
+                  completedTasks: this.state.completedTasks.push(task),
+                });
+              } else {
+                // add task to active tasks.
+                this.setState({
+                  ...this.state,
+                  activeTasks: this.state.activeTasks.push(task),
+                });
+              }
+            });
           }
         );
+        console.log(this.state.completedTasks);
+        console.log(this.state.activeTasks);
       });
   }
 
