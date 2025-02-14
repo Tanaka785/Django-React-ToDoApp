@@ -16,11 +16,9 @@ class CreateTask(APIView):
     serializer_class = TaskSerializer
 
     def post(self, request, format=None):
-        # creates a session.
-        CreateUserSession.create_session()
-
+        if not self.request.session.exists(self.request.session.session_key):
+            self.request.session.create()
         serializer = self.serializer_class(data=request.data)
-        print(serializer.initial_data)
         if serializer.is_valid():
             task = serializer.data.get("title")
             # create the task.
@@ -35,13 +33,14 @@ class UpdateTask(APIView):
     serializer_class = UpdateTaskSerializer 
 
     def patch(self, request, format=None):
-        # create user session.
-        CreateUserSession.create_session()
+        if not self.request.session.exists(self.request.session.session_key):
+            self.request.session.create()
         # handle the updating of the task object.
         serializer = self.serializer_class(data=request.data)
+        print(serializer.data)
         if serializer.is_valid():
             # get the values passed.
-            task_id = serializer.data.get("task_id")
+            task_id = serializer.data.get("id")
             completed = serializer.data.get("completed")
             # get the task object with the passed id.
             tasks = Task.objects.filter(id=task_id)
@@ -54,9 +53,5 @@ class UpdateTask(APIView):
             return Response({'Bad Request': 'Invalid task id passed.'}, status=status.HTTP_404_NOT_FOUND)
         return Response({'Bad Request': 'Invalid data passed.'}, status=status.HTTP_400_BAD_REQUEST)
 
-class CreateUserSession(APIView):
-    def create_session(self):
-        if not self.request.session.exists(self.request.session.session_key):
-            self.request.session.create()            
 
 
