@@ -33,6 +33,7 @@ export default class Homepage extends Component {
     this.addNewTask = this.addNewTask.bind(this);
     this.setCheckBoxState = this.setCheckBoxState.bind(this);
     this.markTaskAsCompleted = this.markTaskAsCompleted.bind(this);
+    this.deleteTask = this.deleteTask.bind(this);
   }
 
   updateTask(e) {
@@ -73,9 +74,22 @@ export default class Homepage extends Component {
     }
   }
 
-  deleteTask() {
+  deleteTask(taskId) {
     alert();
+    // const requestOptions = {
+    //   method: "POST",
+    //   headers: { "Content-Type": 'application/json' },
+    //   body: JSON.stringify({
+    //     id: taskId,
+    //   })
+    // };
+    // fetch("api/delete-task", requestOptions)
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     console.log(data);
+    // })
   }
+
   // get all the tasks
   async componentDidMount() {
     fetch("/api/tasks")
@@ -232,10 +246,12 @@ export default class Homepage extends Component {
                 value={task.id}
                 onChange={this.setCheckBoxState}
               />
-              <Typography variant="h6">{task.title}</Typography>
+              <Typography className="task_id" variant="h6">{task.title}</Typography>
               <Button
                 variant="text"
-                onClick={this.deleteTask}
+                onClick={() => {
+                  this.deleteTask(task.id);
+                }}  
                 // startIcon={<DeleteIcon />}
                 sx={{
                   color: "red",
