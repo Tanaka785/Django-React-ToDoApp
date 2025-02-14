@@ -8,10 +8,12 @@ class TaskSerializer(serializers.ModelSerializer):
             
 
 class UpdateTaskSerializer(serializers.ModelSerializer):
+    
     class Meta: 
         model = Task 
         fields = [
             'id',
-            'completed'
+            'title',
+            'completed',
         ]            
             
