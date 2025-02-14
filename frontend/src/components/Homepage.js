@@ -154,7 +154,7 @@ export default class Homepage extends Component {
         {/* container Grid for the textfield and add task button. */}
         <Grid2 container spacing={1} sx={{ width: "100%", display: "flex" }}>
           <Grid2 xs={8} sx={{ width: "80%" }}>
-            <FormControl sx={{ width: "100%" }}>
+            <FormControl sx={{ width: "100%", width: { xs: "100%" } }}>
               <TextField
                 required={true}
                 label="Add New Task"
@@ -197,32 +197,23 @@ export default class Homepage extends Component {
                 borderRadius: "5px",
               }}
             >
-              <Grid2 xs={2}>
-                <Checkbox
-                  id={task.id}
-                  checked={task.completed}
-                  inputProps={{ "aria-label": "Mark task as completed" }}
-                  value={task.id}
-                  onChange={this.setCheckBoxState}
-                />
-              </Grid2>
-              <Grid2 xs={6}>
-                <Typography variant="h6">{task.title}</Typography>
-              </Grid2>
-              <Grid2
-                xs={4}
-                sx={{ textAlign: "center", width: "30%", textAlign: "end" }}
+              <Checkbox
+                id={task.id}
+                checked={task.completed}
+                inputProps={{ "aria-label": "Mark task as completed" }}
+                value={task.id}
+                onChange={this.setCheckBoxState}
+              />
+              <Typography variant="h6">{task.title}</Typography>
+              <Button
+                variant="text"
+                // startIcon={<DeleteIcon />}
+                sx={{
+                  color: "red",
+                }}
               >
-                <Button
-                  variant="text"
-                  // startIcon={<DeleteIcon />}
-                  sx={{
-                    color: "red",
-                  }}
-                >
-                  DELETE
-                </Button>
-              </Grid2>
+                DELETE
+              </Button>
             </Grid2>
           ))}
           <Grid2 xs={12}>
