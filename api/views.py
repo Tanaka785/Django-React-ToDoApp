@@ -36,10 +36,10 @@ class UpdateTask(APIView):
         if not self.request.session.exists(self.request.session.session_key):
             self.request.session.create()
         # handle the updating of the task object.
+        task_id = request.data.get("id")
         serializer = self.serializer_class(data=request.data)
         # print(serializer.initial_data)
         if serializer.is_valid():
-            task_id = request.data.get("id")
             # get the values passed from the frontend.
             title = serializer.data.get("title")
             completed = serializer.data.get("completed")
