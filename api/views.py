@@ -54,18 +54,19 @@ class UpdateTask(APIView):
             return Response({'Bad Request': 'Invalid task id passed.'}, status=status.HTTP_404_NOT_FOUND)
         return Response({'Bad Request': 'Invalid data passed.'}, status=status.HTTP_400_BAD_REQUEST)
 
-class DeleteTask(APIView):
-    serializer_class = TaskSerializer 
 
-    def post(self, request, format=None):
+class DeleteTask(APIView):
+    def delete(self, request, task_id, format=None):
         if not self.request.session.exists(self.request.session.session_key):
             self.request.session.create()
 
-        task_id = request.data.get("id")
         try: 
             task = Task.objects.get(id=task_id)
         except ObjectDoesNotExist:
-
+            return Response({'Bad Request': 'Task object with the provided ID does not exist...'}, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            task.delete()
+            return Response({'response': 'Task deleted Successfully'}, status=status.HTTP_200_OK)
     
 
 

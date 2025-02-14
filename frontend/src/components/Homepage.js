@@ -74,18 +74,20 @@ export default class Homepage extends Component {
     }
   }
 
+  // handles the deletion of a task.
   deleteTask(taskId) {
     const requestOptions = {
-      method: "POST",
+      method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         id: parseInt(taskId),
       }),
     };
-    fetch("api/delete-task", requestOptions)
+    fetch(`/api/delete/${taskId}`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
+        this.componentDidMount();
       });
   }
 
@@ -104,20 +106,20 @@ export default class Homepage extends Component {
                 // add task to completed tasks.
                 this.setState({
                   ...this.state,
-                  completedTasks: this.state.completedTasks.push(task),
+                  completedTasks: this.state.completedTasks.concat(task),
                 });
               } else {
                 // add task to active tasks.
                 this.setState({
                   ...this.state,
-                  activeTasks: this.state.activeTasks.push(task),
+                  activeTasks: this.state.activeTasks.concat(task),
                 });
               }
             });
           }
         );
-        console.log(this.state.completedTasks);
-        console.log(this.state.activeTasks);
+        // console.log(this.state.completedTasks);
+        // console.log(this.state.activeTasks);
       });
   }
 
@@ -153,7 +155,7 @@ export default class Homepage extends Component {
       fetch(`/api/update-task`, requestOptions)
         .then((response) => response.json())
         .then((result) => {
-          console.log(result);
+          // console.log(result);
         });
     }
   }
