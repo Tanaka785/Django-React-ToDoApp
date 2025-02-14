@@ -75,19 +75,18 @@ export default class Homepage extends Component {
   }
 
   deleteTask(taskId) {
-    alert();
-    // const requestOptions = {
-    //   method: "POST",
-    //   headers: { "Content-Type": 'application/json' },
-    //   body: JSON.stringify({
-    //     id: taskId,
-    //   })
-    // };
-    // fetch("api/delete-task", requestOptions)
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     console.log(data);
-    // })
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        id: parseInt(taskId),
+      }),
+    };
+    fetch("api/delete-task", requestOptions)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      });
   }
 
   // get all the tasks
@@ -246,12 +245,14 @@ export default class Homepage extends Component {
                 value={task.id}
                 onChange={this.setCheckBoxState}
               />
-              <Typography className="task_id" variant="h6">{task.title}</Typography>
+              <Typography className="task_id" variant="h6">
+                {task.title}
+              </Typography>
               <Button
                 variant="text"
                 onClick={() => {
                   this.deleteTask(task.id);
-                }}  
+                }}
                 // startIcon={<DeleteIcon />}
                 sx={{
                   color: "red",
