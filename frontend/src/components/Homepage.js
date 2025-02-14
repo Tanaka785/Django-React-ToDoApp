@@ -159,33 +159,31 @@ export default class Homepage extends Component {
             width: "100%",
             display: "flex",
             height: "auto",
-            border: "1px solid blue",
+            // border: "1px solid blue",
           }}
         >
           <Grid2 xs={8} sx={{ width: "100%" }}>
-            <FormControl sx={{ width: "100%"}}>
+            <FormControl sx={{ width: "100%" }}>
               <TextField
                 required={true}
-                label="Add New Task"i
+                label="Add New Task"
                 error={this.state.error}
                 helperText={this.state.error}
                 variant="outlined"
                 value={this.state.task}
-                sx={{ width: "100%" }}
+                sx={{ width: "100%", marginBottom: '5px' }}
                 onChange={this.updateTask}
                 onKeyDown={this.addNewTask}
               />
+              <Button
+                variant="contained"
+                color="primary"
+                sx={{ height: "54px", width: "100%" }}
+                onClick={this.addNewTask}
+              >
+                Add Task
+              </Button>
             </FormControl>
-          </Grid2>
-          <Grid2 xs={4}>
-            <Button
-              variant="contained"
-              color="primary"
-              sx={{ height: "54px", width: "100%" }}
-              onClick={this.addNewTask}
-            >
-              Add Task
-            </Button>
           </Grid2>
         </Grid2>
 
