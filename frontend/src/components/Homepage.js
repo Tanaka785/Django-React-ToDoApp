@@ -171,7 +171,7 @@ export default class Homepage extends Component {
                 helperText={this.state.error}
                 variant="outlined"
                 value={this.state.task}
-                sx={{ width: "100%", marginBottom: '5px' }}
+                sx={{ width: "100%", marginBottom: "5px" }}
                 onChange={this.updateTask}
                 onKeyDown={this.addNewTask}
               />
