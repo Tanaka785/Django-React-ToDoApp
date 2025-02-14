@@ -15,6 +15,7 @@ import {
   FormHelperText,
   TextField,
   Checkbox,
+  // DeleteIcon,
 } from "@mui/material";
 
 export default class Homepage extends Component {
@@ -52,7 +53,6 @@ export default class Homepage extends Component {
         fetch("/api/create-task", requestOptions)
           .then((response) => response.json())
           .then((data) => {
-            console.log(data);
             this.setState(
               {
                 ...this.state,
@@ -81,7 +81,7 @@ export default class Homepage extends Component {
             tasks: data,
           },
           () => {
-            console.log(this.state.tasks);
+            // console.log(this.state.tasks);
           }
         );
       });
@@ -102,22 +102,20 @@ export default class Homepage extends Component {
       ...this.state,
       tasks: updatedTasks,
     });
-
-    console.log(this.state.tasks);
   }
 
   markTaskAsCompleted(task) {
     if (task.completed === true) {
       // update task through the backend.
       const requestOptions = {
-        method: "POST",
+        method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          task_id: task.id,
+          id: task.id,
           completed: true,
         }),
       };
-      fetch(`/api/${task.id}/update`, requestOptions)
+      fetch(`/api/update/${parseInt(task.id)}`, requestOptions)
         .then((response) => response.json())
         .then((result) => {
           console.log(result);
@@ -189,7 +187,7 @@ export default class Homepage extends Component {
               xs={12}
               sx={{
                 display: "flex",
-                flexWrap: 'wrap',
+                flexWrap: "wrap",
                 alignItems: "center",
                 marginBottom: "10px",
                 borderBottom: "1px solid",
@@ -216,6 +214,7 @@ export default class Homepage extends Component {
               >
                 <Button
                   variant="contained"
+                  // startIcon={<DeleteIcon />}
                   sx={{
                     border: "none",
                     color: "red",
