@@ -25,6 +25,9 @@ export default class Homepage extends Component {
       task: "",
       error: "",
       tasks: [],
+      completedTasks: [],
+      activeTasks: [],
+      
     };
     this.renderHomepage = this.renderHomepage.bind(this);
     this.updateTask = this.updateTask.bind(this);
