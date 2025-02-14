@@ -172,7 +172,7 @@ export default class Homepage extends Component {
             <Button
               variant="contained"
               color="primary"
-              sx={{ height: "54px", padding: "25px" }}
+              sx={{ height: "54px", width: "128px" }}
               onClick={this.addNewTask}
             >
               Add Task
@@ -181,11 +181,7 @@ export default class Homepage extends Component {
         </Grid2>
 
         {/* container Grid for tasks. */}
-        <Grid2
-          container
-          spacing={1}
-          sx={{ width: "100%",}}
-        >
+        <Grid2 container spacing={1} sx={{ width: "100%" }}>
           {this.state.tasks.slice(0, 3).map((task, index) => (
             <Grid2
               container
@@ -229,7 +225,7 @@ export default class Homepage extends Component {
               </Grid2>
             </Grid2>
           ))}
-          <Grid2 xs={12} sx={{ textAlign: "center" }}>
+          <Grid2 xs={12}>
             <Typography component={Link} to="/tasks">
               View All Tasks
             </Typography>
