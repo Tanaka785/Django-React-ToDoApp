@@ -137,16 +137,22 @@ export default class Homepage extends Component {
           height: "100%",
         }}
       >
-        <Grid2 xs={12} align="start">
-          <Typography component={"h1"}>
-            <b>TO-DO</b>
-          </Typography>
-        </Grid2>
+        {/* container Grid for the TO-DO heading. */}
         <Grid2
           container
-          direction={"row"}
-          sx={{ display: "flex", width: "100%" }}
+          spacing={1}
+          sx={{ width: "100%" }}
+          justifyContent={"center"}
         >
+          <Grid2 xs={12}>
+            <Typography component={"h1"}>
+              <b>TO-DO</b>
+            </Typography>
+          </Grid2>
+        </Grid2>
+
+        {/* container Grid for the textfield and add task button. */}
+        <Grid2 container spacing={1} sx={{ width: "100%", display: "flex" }}>
           <Grid2 xs={8} sx={{ width: "80%" }}>
             <FormControl sx={{ width: "100%" }}>
               <TextField
@@ -162,13 +168,7 @@ export default class Homepage extends Component {
               />
             </FormControl>
           </Grid2>
-          <Grid2
-            xs={4}
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
+          <Grid2 xs={4}>
             <Button
               variant="contained"
               color="primary"
@@ -179,26 +179,29 @@ export default class Homepage extends Component {
             </Button>
           </Grid2>
         </Grid2>
-        <Grid2 xs={12} sx={{ width: "100%", display: "block" }}>
+
+        {/* container Grid for tasks. */}
+        <Grid2
+          container
+          spacing={1}
+          sx={{ width: "100%",}}
+        >
           {this.state.tasks.slice(0, 3).map((task, index) => (
             <Grid2
               container
-              direction={"row"}
               key={task.id}
-              xs={12}
               sx={{
                 display: "flex",
-                flexWrap: "wrap",
                 alignItems: "center",
                 marginBottom: "10px",
                 borderBottom: "1px solid",
                 borderColor: "whitesmoke",
                 boxShadow: "0px 2px 2px rgba(119, 136, 153, 0.5)",
-                width: "98.5%",
+                width: "100%",
                 borderRadius: "5px",
               }}
             >
-              <Grid2 xs={3} sx={{ width: "10%" }}>
+              <Grid2 xs={2}>
                 <Checkbox
                   id={task.id}
                   checked={task.completed}
@@ -207,10 +210,11 @@ export default class Homepage extends Component {
                   onChange={this.setCheckBoxState}
                 />
               </Grid2>
-              <Grid2 xs={6} sx={{ width: "60%" }}>
+              <Grid2 xs={6}>
                 <Typography variant="h6">{task.title}</Typography>
               </Grid2>
               <Grid2
+                xs={4}
                 sx={{ textAlign: "center", width: "30%", textAlign: "end" }}
               >
                 <Button
