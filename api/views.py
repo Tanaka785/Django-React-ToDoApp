@@ -39,9 +39,8 @@ class UpdateTask(APIView):
         serializer = self.serializer_class(data=request.data)
         # print(serializer.initial_data)
         if serializer.is_valid():
-            print(serializer.data)
-            # get the values passed.
-            task_id = serializer.data.get("id")
+            task_id = request.data.get("id")
+            # get the values passed from the frontend.
             title = serializer.data.get("title")
             completed = serializer.data.get("completed")
             tasks = Task.objects.filter(id=task_id)

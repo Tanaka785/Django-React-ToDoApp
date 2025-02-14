@@ -15,5 +15,6 @@ class UpdateTaskSerializer(serializers.ModelSerializer):
             'id',
             'title',
             'completed',
-        ]            
+        ]         
+   
             
