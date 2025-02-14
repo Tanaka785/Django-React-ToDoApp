@@ -37,18 +37,20 @@ class UpdateTask(APIView):
             self.request.session.create()
         # handle the updating of the task object.
         serializer = self.serializer_class(data=request.data)
-        print(serializer.data)
+        # print(serializer.initial_data)
         if serializer.is_valid():
+            print(serializer.data)
             # get the values passed.
             task_id = serializer.data.get("id")
+            title = serializer.data.get("title")
             completed = serializer.data.get("completed")
-            # get the task object with the passed id.
             tasks = Task.objects.filter(id=task_id)
             # checks if the task object exists.
             if tasks.exists():
                 task = tasks[0]
+                task.title = title
                 task.completed = completed 
-                task.save(update_fields=['completed'])
+                task.save(update_fields=['completed', 'title'])
                 return Response({'Task Updated': 'Task was updated successfully'}, status=status.HTTP_200_OK)
             return Response({'Bad Request': 'Invalid task id passed.'}, status=status.HTTP_404_NOT_FOUND)
         return Response({'Bad Request': 'Invalid data passed.'}, status=status.HTTP_400_BAD_REQUEST)
