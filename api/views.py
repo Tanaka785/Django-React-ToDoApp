@@ -11,6 +11,15 @@ class TaskSerializerView(generics.ListAPIView):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
 
+class GetActiveTasks(APIView):
+    serializer_class = TaskSerializer
+    queryset = Task.objects.all().filter(completed=False)
+
+
+class GetCompletedTasks(APIView):
+    serializer_class = TaskSerializer
+    queryset = Task.objects.all().filter(completed=True)
+
 
 class CreateTask(APIView):
     serializer_class = TaskSerializer
