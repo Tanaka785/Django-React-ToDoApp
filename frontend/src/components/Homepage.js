@@ -162,8 +162,8 @@ export default class Homepage extends Component {
             border: "1px solid blue",
           }}
         >
-          <Grid2 xs={8} sx={{ width: "80%" }}>
-            <FormControl sx={{ width: "100%", width: { xs: "100%" } }}>
+          <Grid2 xs={8} sx={{ width: "100%" }}>
+            <FormControl sx={{ width: "100%"}}>
               <TextField
                 required={true}
                 label="Add New Task"i
