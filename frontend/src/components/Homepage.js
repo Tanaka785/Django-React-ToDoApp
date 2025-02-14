@@ -141,7 +141,7 @@ export default class Homepage extends Component {
         <Grid2
           container
           spacing={1}
-          sx={{ width: "100%" }}
+          sx={{ width: "100%", height: "auto" }}
           justifyContent={"center"}
         >
           <Grid2 xs={12}>
@@ -152,12 +152,21 @@ export default class Homepage extends Component {
         </Grid2>
 
         {/* container Grid for the textfield and add task button. */}
-        <Grid2 container spacing={1} sx={{ width: "100%", display: "flex" }}>
+        <Grid2
+          container
+          spacing={1}
+          sx={{
+            width: "100%",
+            display: "flex",
+            height: "auto",
+            border: "1px solid blue",
+          }}
+        >
           <Grid2 xs={8} sx={{ width: "80%" }}>
             <FormControl sx={{ width: "100%", width: { xs: "100%" } }}>
               <TextField
                 required={true}
-                label="Add New Task"
+                label="Add New Task"i
                 error={this.state.error}
                 helperText={this.state.error}
                 variant="outlined"
@@ -172,7 +181,7 @@ export default class Homepage extends Component {
             <Button
               variant="contained"
               color="primary"
-              sx={{ height: "54px", width: "128px" }}
+              sx={{ height: "54px", width: "100%" }}
               onClick={this.addNewTask}
             >
               Add Task
@@ -181,7 +190,7 @@ export default class Homepage extends Component {
         </Grid2>
 
         {/* container Grid for tasks. */}
-        <Grid2 container spacing={1} sx={{ width: "100%" }}>
+        <Grid2 container spacing={1} sx={{ width: "100%", height: "auto" }}>
           {this.state.tasks.slice(0, 3).map((task, index) => (
             <Grid2
               container
