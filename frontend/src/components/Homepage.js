@@ -111,11 +111,12 @@ export default class Homepage extends Component {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          id: task.id,
+          id: parseInt(task.id),
           completed: true,
+          title: task.title,
         }),
       };
-      fetch(`/api/update/${parseInt(task.id)}`, requestOptions)
+      fetch(`/api/update-task`, requestOptions)
         .then((response) => response.json())
         .then((result) => {
           console.log(result);
@@ -213,12 +214,10 @@ export default class Homepage extends Component {
                 sx={{ textAlign: "center", width: "30%", textAlign: "end" }}
               >
                 <Button
-                  variant="contained"
+                  variant="text"
                   // startIcon={<DeleteIcon />}
                   sx={{
-                    border: "none",
                     color: "red",
-                    backgroundColor: "white",
                   }}
                 >
                   DELETE
