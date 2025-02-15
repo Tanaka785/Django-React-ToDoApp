@@ -18,6 +18,7 @@ import {
   // DeleteIcon,
 } from "@mui/material";
 import Tasks from "./Tasks";
+import EditTaskPage from "./EditTaskPage";
 
 export default class Homepage extends Component {
   constructor(props) {
