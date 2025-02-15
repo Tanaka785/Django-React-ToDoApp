@@ -39,7 +39,7 @@ function EditTaskPage() {
 
   const updateTaskField = (event) => {
     const updateButton = (document.querySelector("#update-button"));
-    updateButton.variant = "primary";
+    updateButton.variant = "standard";
     // update taskTitle state variable.
     setState({
       ...state, 
@@ -78,16 +78,30 @@ function EditTaskPage() {
         <form>
           <Grid2 sx={{ width: "100%" }}>
             <FormControl sx={{ width: "100%", marginBottom: "10px" }}>
-              <TextField
-                required={true}
-                variant="standard"
-                defaultValue={state.taskObject}
-                onChange={updateTaskField}
-              ></TextField>
+              {state.taskObject ? (
+                <TextField
+                  required={true}
+                  variant="standard"
+                  defaultValue={state.taskObject.title}
+                  onChange={updateTaskField}
+                ></TextField>
+              ) : (
+                <TextField
+                  required={true}
+                  variant="standard"
+                  defaultValue=""
+                  onChange={updateTaskField}
+                ></TextField>
+              )}
             </FormControl>
           </Grid2>
           <Grid2 sx={{ textAlign: "center" }}>
-            <Button id="update-button" type="submit" variant="disabled" color="primary">
+            <Button
+              id="update-button"
+              type="submit"
+              variant="disabled"
+              color="primary"
+            >
               Update
             </Button>
           </Grid2>
