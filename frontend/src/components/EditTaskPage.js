@@ -5,13 +5,14 @@ import {
   TextField,
   Button,
 } from "@mui/material";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import React, { Component, useEffect, useState, useRef } from "react";
 
 function EditTaskPage() {
   const params = useParams();
   const inputRef = useRef(null);
-
+  const navigate = useNavigate();
+  
   const [state, setState] = useState({
     taskObject: null,
     error: "",
