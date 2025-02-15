@@ -36,6 +36,10 @@ function EditTaskPage() {
     });
   }, [params.taskId]);
 
+  const updateTaskField = () => {
+    alert();
+  }
+  
   if (state.error) {
     return (
       <Grid2
