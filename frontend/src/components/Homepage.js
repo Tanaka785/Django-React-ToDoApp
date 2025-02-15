@@ -279,6 +279,7 @@ export default class Homepage extends Component {
       <Router>
         <Routes>
           <Route path="/" element={<this.renderHomepage />} />
+          <Route path="/tasks/active" element={<Tasks />} />
         </Routes>
       </Router>
     );
