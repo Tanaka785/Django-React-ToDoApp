@@ -1,10 +1,11 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
   Link,
+  useLocation,
 } from "react-router-dom";
 import {
   Typography,
@@ -156,6 +157,12 @@ export default class Homepage extends Component {
   }
 
   renderHomepage() {
+    const location = useLocation();
+
+    useEffect(() => {
+      this.componentDidMount();
+    }, [location]);
+
     return (
       <Grid2
         container
