@@ -67,7 +67,12 @@ function EditTaskPage() {
         <form>
           <Grid2 sx={{ width: "100%" }}>
             <FormControl sx={{ width: "100%", marginBottom: "10px" }}>
-              <TextField required={true} variant="standard"></TextField>
+              <TextField
+                required={true}
+                variant="standard"
+                defaultValue={state.task}
+                onChange={updateTaskField}
+              ></TextField>
             </FormControl>
           </Grid2>
           <Grid2 sx={{ textAlign: "center" }}>
