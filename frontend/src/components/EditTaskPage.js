@@ -1,4 +1,4 @@
-import { Typography, Grid2 } from "@mui/material";
+import { Typography, Grid2, FormControl, TextField, Button } from "@mui/material";
 import React, { Component } from "react";
 
 export default class EditTaskPage extends Component {
@@ -10,7 +10,14 @@ export default class EditTaskPage extends Component {
     return (
       <Grid2 container spacing={1} direction={"column"}>
         <Grid2>
-          <Typography>Edit Task</Typography>
+          <form>
+            <FormControl>
+              <TextField required={true}></TextField>
+            </FormControl>
+            <Button type="submit" variant="disabled" color="primary">
+              Update
+            </Button>
+          </form>
         </Grid2>
       </Grid2>
     );
