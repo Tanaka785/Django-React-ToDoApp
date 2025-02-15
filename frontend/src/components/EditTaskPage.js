@@ -38,6 +38,8 @@ function EditTaskPage() {
   }, [params.taskId]);
 
   const updateTaskField = (event) => {
+    const updateButton = (document.querySelector("#update-button"));
+    updateButton.variant = "primary";
     // update taskTitle state variable.
     setState({
       ...state, 
@@ -85,7 +87,7 @@ function EditTaskPage() {
             </FormControl>
           </Grid2>
           <Grid2 sx={{ textAlign: "center" }}>
-            <Button type="submit" variant="disabled" color="primary">
+            <Button id="update-button" type="submit" variant="disabled" color="primary">
               Update
             </Button>
           </Grid2>
