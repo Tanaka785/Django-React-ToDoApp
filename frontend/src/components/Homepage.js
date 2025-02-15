@@ -258,8 +258,11 @@ export default class Homepage extends Component {
             </Grid2>
           ))}
           <Grid2 xs={12}>
-            <Typography component={Link} to="/tasks">
+            <Typography component={Link} to="/tasks/active">
               View All Tasks
+            </Typography>
+            <Typography component={Link} to="/tasks/active">
+              All
             </Typography>
             <Typography component={Link} to="/tasks/completed">
               completed
