@@ -19,7 +19,7 @@ export default class EditTaskPage extends Component {
           <form>
             <Grid2 fullWidth>
               <FormControl fullWidth sx={{ marginBottom: "10px" }}>
-                <TextField required={true} variant="outlined"></TextField>
+                <TextField required={true} variant="standard"></TextField>
               </FormControl>
             </Grid2>
             <Grid2 sx={{ textAlign: "center" }}>
