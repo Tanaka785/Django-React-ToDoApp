@@ -51,9 +51,11 @@ function EditTaskPage() {
   }, [state.taskObject]);
 
   const updateTaskField = (event) => {
-    // update taskTitle state variable.
+    const buttonVariant =
+      event.target.value.trim() !== "" ? "contained" : "disabled";
     setState({
       ...state,
+      buttonVariant: buttonVariant,
       taskTitle: event.target.value,
     });
   };
