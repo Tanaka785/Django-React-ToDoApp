@@ -251,7 +251,11 @@ export default class Homepage extends Component {
                 </Typography>
               </Grid2>
               <Grid2 sx={{ ml: "auto" }}>
-                <Button variant="text" component={Link} to={`/tasks/${task.id}/edit`}>
+                <Button
+                  variant="text"
+                  component={Link}
+                  to={`/tasks/${task.id}/edit`}
+                >
                   EDIT
                 </Button>
                 <Button
@@ -279,17 +283,20 @@ export default class Homepage extends Component {
           }}
         >
           <Grid2 xs={6}>
-            <Typography component={Link} to="/tasks/active">
+            <Typography
+              component={Link}
+              to="/tasks/active"
+              sx={{ color: "primary.main" }}
+            >
               View All Tasks
             </Typography>
           </Grid2>
-          {/* <Grid2 xs={4}>
-            <Typography component={Link} to="/tasks/active">
-              All
-            </Typography>
-          </Grid2> */}
           <Grid2 xs={6}>
-            <Typography component={Link} to="/tasks/completed">
+            <Typography
+              component={Link}
+              to="/tasks/completed"
+              sx={{ color: "primary.main" }}
+            >
               completed
             </Typography>
           </Grid2>
