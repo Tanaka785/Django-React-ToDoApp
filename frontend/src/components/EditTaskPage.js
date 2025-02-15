@@ -11,7 +11,7 @@ import React, { Component, useEffect, useState } from "react";
 function EditTaskPage() {
   const params = useParams();
   const [state, setState] = useState({
-    taskId: null,
+    task: null,
   });
 
   // rerenders the component everytime it receives a new task.
