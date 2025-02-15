@@ -31,7 +31,7 @@ export default class Homepage extends Component {
       activeTasks: [],
     };
     this.renderHomepage = this.renderHomepage.bind(this);
-    this.updateTask = this.updateTaskFieldValue.bind(this);
+    this.updateTaskFieldValue = this.updateTaskFieldValue.bind(this);
     this.addNewTask = this.addNewTask.bind(this);
     this.setCheckBoxState = this.setCheckBoxState.bind(this);
     this.updateTaskObject = this.updateTaskObject.bind(this);
