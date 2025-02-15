@@ -5,7 +5,7 @@ import {
   TextField,
   Button,
 } from "@mui/material";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import React, { Component, useEffect, useState } from "react";
 
 function EditTaskPage() {
@@ -53,6 +53,9 @@ function EditTaskPage() {
           }}
         >
           <Typography variant="h3">Page Not Found.</Typography>
+          <Typography variant="h6" component={Link}>
+            Home
+          </Typography>
         </Grid2>
       </Grid2>
     );
