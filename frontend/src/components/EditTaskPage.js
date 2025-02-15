@@ -6,10 +6,12 @@ import {
   Button,
 } from "@mui/material";
 import { useParams, Link } from "react-router-dom";
-import React, { Component, useEffect, useState } from "react";
+import React, { Component, useEffect, useState, useRef } from "react";
 
 function EditTaskPage() {
   const params = useParams();
+  const inputRef = useRef(null);
+
   const [state, setState] = useState({
     taskObject: null,
     error: "",
@@ -36,6 +38,16 @@ function EditTaskPage() {
       }
     });
   }, [params.taskId]);
+
+  useEffect(() => {
+    if (inputRef.current && state.taskObject) {
+      inputRef.current.focus();
+      inputRef.current.setSelectionRange(
+        inputRef.current.value.length,
+        inputRef.current.value.length
+      );
+    }
+  }, [state.taskObject]);
 
   const updateTaskField = (event) => {
     const updateButton = document.querySelector("#update-button");
@@ -82,6 +94,7 @@ function EditTaskPage() {
                 <TextField
                   required={true}
                   variant="standard"
+                  inputRef={inputRef}
                   defaultValue={state.taskObject.title}
                   onChange={updateTaskField}
                 ></TextField>
@@ -90,7 +103,7 @@ function EditTaskPage() {
                   required={true}
                   variant="standard"
                   defaultValue=""
-                  autoFocus={true}
+                  inputRef={inputRef}
                   onChange={updateTaskField}
                 ></TextField>
               )}
