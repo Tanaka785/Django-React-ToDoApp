@@ -17,17 +17,23 @@ function EditTaskPage() {
 
   // rerenders the component everytime it receives a new task.
   useEffect(() => {
-    fetch(`/api/get-task?id=${params.taskId}`)
-      .then(response => {
-        if (response.ok) {
-          response = response.json()
-            .then(data => { 
-              console.log(data);
-          })
-        } else {
-          console.log("alert");
-        }
-      })
+    fetch(`/api/get-task?id=${params.taskId}`).then((response) => {
+      if (response.ok) {
+        response = response.json().then((data) => {
+          setState({
+            ...state,
+            task: data,
+          });
+        });
+      } else {
+        response = response.json().then((data) => {
+          setState({
+            ...state,
+            error: data,
+          });
+        });
+      }
+    });
   }, [params.taskId]);
 
   return (
