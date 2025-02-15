@@ -118,7 +118,13 @@ function EditTaskPage() {
                   variant="standard"
                   inputRef={inputRef}
                   defaultValue={state.taskObject.title}
+                  onKeyPress={(event) => {
+                    if (event.key === "Enter") {
+                      event.preventDefault();
+                    }
+                  }}
                   onChange={updateTaskField}
+                  onKeyDown={updateTaskObject}
                 ></TextField>
               ) : (
                 <TextField
@@ -126,7 +132,13 @@ function EditTaskPage() {
                   variant="standard"
                   defaultValue=""
                   inputRef={inputRef}
+                  onKeyPress={(event) => {
+                    if (event.key === "Enter") {
+                      event.preventDefault();
+                    }
+                  }}
                   onChange={updateTaskField}
+                  onKeyDown={updateTaskObject}
                 ></TextField>
               )}
             </FormControl>
