@@ -36,6 +36,28 @@ function EditTaskPage() {
     });
   }, [params.taskId]);
 
+  if (state.error) {
+    return (
+      <Grid2
+        container
+        spacing={1}
+        direction={"column"}
+        alignItems={"center"}
+        sx={{ width: "100%" }}
+      >
+        <Grid2
+          xs={12}
+          sx={{
+            width: "100%",
+            textAlign: "center",
+          }}
+        >
+          <Typography variant="h3">Page Not Found.</Typography>
+        </Grid2>
+      </Grid2>
+    );
+  }
+
   return (
     <Grid2 container spacing={1} direction={"column"} sx={{ width: "100%" }}>
       <Grid2 sx={{ width: "100%" }} xs={12}>
