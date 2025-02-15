@@ -116,6 +116,7 @@ function EditTaskPage() {
               type="submit"
               variant={state.buttonVariant}
               color="primary"
+              onClick={() => {}}
             >
               Update
             </Button>
