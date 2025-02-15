@@ -10,13 +10,25 @@ import React, { Component } from "react";
 
 function EditTaskPage() {
 
-  const taskId = 
+  const taskId = useParams();
+  
+  // function that checks if the task to be edited exists.
+  const CheckIfTaskExits = () => {
+    const requestOptions = {
+      method: "GET",
+      headers: { "Content-Type": 'application/json' },
+      body: JSON.stringify({
+        id: taskId
+      })
+    }
+  }
+
   return (
     <Grid2 container spacing={1} direction={"column"} sx={{ width: "100%" }}>
-      <Grid2 fullWidth xs={12}>
+      <Grid2 sx={{ width: '100%'}} xs={12}>
         <form>
-          <Grid2 fullWidth>
-            <FormControl fullWidth sx={{ marginBottom: "10px" }}>
+          <Grid2 sx={{ width: '100%'}}>
+            <FormControl sx={{ width: '100%', marginBottom: "10px" }}>
               <TextField required={true} variant="standard"></TextField>
             </FormControl>
           </Grid2>
