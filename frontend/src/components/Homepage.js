@@ -250,6 +250,9 @@ export default class Homepage extends Component {
                 </Typography>
               </Grid2>
               <Grid2 item sx={{ ml: "auto" }}>
+                <Button variant="text" onClick={() => {}}>
+                  EDIT
+                </Button>
                 <Button
                   variant="text"
                   onClick={() => {
@@ -265,7 +268,15 @@ export default class Homepage extends Component {
         </Grid2>
 
         {/* container containing the tasks link. */}
-        <Grid2 container spacing={1} sx={{ width: "100%", height: "auto", justifyContent: 'space-between' }}>
+        <Grid2
+          container
+          spacing={1}
+          sx={{
+            width: "100%",
+            height: "auto",
+            justifyContent: "space-between",
+          }}
+        >
           <Grid2 xs={6}>
             <Typography component={Link} to="/tasks/active">
               View All Tasks
