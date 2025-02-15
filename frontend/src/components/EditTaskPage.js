@@ -12,7 +12,7 @@ function EditTaskPage() {
   const params = useParams();
   const inputRef = useRef(null);
   const navigate = useNavigate();
-  
+
   const [state, setState] = useState({
     taskObject: null,
     error: "",
@@ -76,7 +76,7 @@ function EditTaskPage() {
         .then((response) => response.json())
         .then((result) => {
           // redirect user to homepage.
-          alert(result.title);
+          navigate("/");
         });
     }
   };
@@ -134,7 +134,6 @@ function EditTaskPage() {
           <Grid2 sx={{ textAlign: "center" }}>
             <Button
               id="update-button"
-              type="submit"
               variant={state.buttonVariant}
               color="primary"
               onClick={updateTaskObject}
