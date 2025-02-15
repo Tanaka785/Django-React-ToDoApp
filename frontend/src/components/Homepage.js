@@ -31,14 +31,14 @@ export default class Homepage extends Component {
       activeTasks: [],
     };
     this.renderHomepage = this.renderHomepage.bind(this);
-    this.updateTask = this.updateTask.bind(this);
+    this.updateTask = this.updateTaskFieldValue.bind(this);
     this.addNewTask = this.addNewTask.bind(this);
     this.setCheckBoxState = this.setCheckBoxState.bind(this);
     this.updateTaskObject = this.updateTaskObject.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
   }
 
-  updateTask(e) {
+  updateTaskFieldValue(e) {
     this.setState({
       ...this.state,
       task: e.target.value,
@@ -203,7 +203,7 @@ export default class Homepage extends Component {
                 helperText={this.state.error}
                 value={this.state.task}
                 sx={{ width: "100%", marginBottom: "5px" }}
-                onChange={this.updateTask}
+                onChange={this.updateTaskFieldValue}
                 onKeyDown={this.addNewTask}
               />
               <Button
