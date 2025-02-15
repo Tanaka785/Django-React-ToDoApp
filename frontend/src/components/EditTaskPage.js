@@ -53,7 +53,7 @@ function EditTaskPage() {
           }}
         >
           <Typography variant="h3">Page Not Found.</Typography>
-          <Typography variant="h6" component={Link}>
+          <Typography variant="h6" component={Link} to="/">
             Home
           </Typography>
         </Grid2>
@@ -74,6 +74,16 @@ function EditTaskPage() {
             <Button type="submit" variant="disabled" color="primary">
               Update
             </Button>
+          </Grid2>
+          <Grid2 sx={{ textDecoration: "none", textAlign: "center" }}>
+            <Typography
+              variant="h6"
+              component={Link}
+              to="/"
+              sx={{ textDecoration: "none" }}
+            >
+              home
+            </Typography>
           </Grid2>
         </form>
       </Grid2>
