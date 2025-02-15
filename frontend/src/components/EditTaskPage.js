@@ -12,18 +12,18 @@ function EditTaskPage() {
   const params = useParams();
   const [state, setState] = useState({
     task: null,
+    error: "",
   });
 
   // rerenders the component everytime it receives a new task.
   useEffect(() => {
     fetch(`/api/get-task?id=${params.taskId}`)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        // setState({
-        //   ...state,
-        //   taskId: data.id
-        // })
+      .then((response) => {
+        if (response.ok) {
+          // update the state task.
+        } else {
+          // update the state error.
+        }
       });
   }, [params.taskId]);
 
