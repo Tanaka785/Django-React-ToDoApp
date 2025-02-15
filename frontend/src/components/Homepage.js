@@ -261,6 +261,9 @@ export default class Homepage extends Component {
             <Typography component={Link} to="/tasks">
               View All Tasks
             </Typography>
+            <Typography component={Link} to="/tasks/completed">
+              completed
+            </Typography>
           </Grid2>
         </Grid2>
       </Grid2>
