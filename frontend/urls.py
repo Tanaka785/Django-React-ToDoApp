@@ -5,5 +5,6 @@ app_name = "frontend"
 
 urlpatterns = [
     path("", views.index, name="index"),
-    path("create", views.index, name="create-task")
+    path("create", views.index, name="create-task"),
+    path("tasks/active", views.index, name="active-tasks")
 ]
