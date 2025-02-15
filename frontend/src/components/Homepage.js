@@ -17,6 +17,7 @@ import {
   Checkbox,
   // DeleteIcon,
 } from "@mui/material";
+import Tasks from "./Tasks";
 
 export default class Homepage extends Component {
   constructor(props) {
