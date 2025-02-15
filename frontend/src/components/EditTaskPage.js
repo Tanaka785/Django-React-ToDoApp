@@ -16,7 +16,7 @@ function EditTaskPage() {
     taskObject: null,
     error: "",
     taskTitle: "",
-    buttonVariant: disabled,
+    buttonVariant: "disabled",
   });
 
   // rerenders the component everytime it receives a new task.
@@ -51,8 +51,6 @@ function EditTaskPage() {
   }, [state.taskObject]);
 
   const updateTaskField = (event) => {
-    const updateButton = document.querySelector("#update-button");
-    updateButton.variant = "standard";
     // update taskTitle state variable.
     setState({
       ...state,
@@ -114,7 +112,7 @@ function EditTaskPage() {
             <Button
               id="update-button"
               type="submit"
-              variant="disabled"
+              variant={state.buttonVariant}
               color="primary"
             >
               Update
