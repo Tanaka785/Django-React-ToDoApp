@@ -38,13 +38,13 @@ function EditTaskPage() {
   }, [params.taskId]);
 
   const updateTaskField = (event) => {
-    const updateButton = (document.querySelector("#update-button"));
+    const updateButton = document.querySelector("#update-button");
     updateButton.variant = "standard";
     // update taskTitle state variable.
     setState({
-      ...state, 
-      taskTitle: event.target.value
-    })
+      ...state,
+      taskTitle: event.target.value,
+    });
   };
 
   if (state.error) {
@@ -90,6 +90,7 @@ function EditTaskPage() {
                   required={true}
                   variant="standard"
                   defaultValue=""
+                  autoFocus={true}
                   onChange={updateTaskField}
                 ></TextField>
               )}
