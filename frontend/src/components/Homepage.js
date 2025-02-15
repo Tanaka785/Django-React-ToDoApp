@@ -197,10 +197,10 @@ export default class Homepage extends Component {
             <FormControl sx={{ width: "100%" }}>
               <TextField
                 required={true}
+                variant="standard"
                 label="Add New Task"
                 error={this.state.error}
                 helperText={this.state.error}
-                variant="outlined"
                 value={this.state.task}
                 sx={{ width: "100%", marginBottom: "5px" }}
                 onChange={this.updateTask}
