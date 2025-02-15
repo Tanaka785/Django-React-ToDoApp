@@ -60,6 +60,26 @@ function EditTaskPage() {
     });
   };
 
+  const updateTaskObject = (event) => {
+    if (event.key === "Enter" || event.type === "click") {
+      const requestOptions = {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          id: parseInt(state.taskObject.id),
+          completed: false,
+          title: state.taskTitle,
+        }),
+      };
+      fetch(`/api/update-task`, requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+          // redirect user to homepage.
+          alert(result.title);
+        });
+    }
+  };
+
   if (state.error) {
     return (
       <Grid2
@@ -116,7 +136,7 @@ function EditTaskPage() {
               type="submit"
               variant={state.buttonVariant}
               color="primary"
-              onClick={() => {}}
+              onClick={updateTaskObject}
             >
               Update
             </Button>
