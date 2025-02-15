@@ -69,4 +69,19 @@ class DeleteTask(APIView):
             return Response({'response': 'Task deleted Successfully'}, status=status.HTTP_200_OK)
     
 
+class GetTask(APIView):
+    serializer_class = TaskSerializer
+    lookup_url_kwarg = 'id'
 
+    def get(self, request, format=None):
+        if not self.request.session.exists(self.request.session.session_key):
+            self.request.session.create()
+
+        id = self.request.GET.get(self.lookup_url_kwarg)
+        try: 
+            task = Task.objects.get(id=id)
+        except:
+            return Response({'Bad Request': 'Invalid Task Id passed'}, status=status.HTTP_404_NOT_FOUND)
+        else: 
+            room_data= TaskSerializer(task).data 
+            return Response(room_data, status=status.HTTP_200_OK)
