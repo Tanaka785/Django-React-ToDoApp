@@ -37,10 +37,12 @@ function EditTaskPage() {
     });
   }, [params.taskId]);
 
-  console.log(state.taskTitle);
-
-  const updateTaskField = () => {
-    alert();
+  const updateTaskField = (event) => {
+    // update taskTitle state variable.
+    setState({
+      ...state, 
+      taskTitle: event.target.value
+    })
   };
 
   if (state.error) {
