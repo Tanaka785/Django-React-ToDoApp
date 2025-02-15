@@ -226,6 +226,7 @@ export default class Homepage extends Component {
               sx={{
                 display: "flex",
                 alignItems: "center",
+                justifyContent: "flex-start",
                 marginBottom: "10px",
                 borderBottom: "1px solid",
                 borderColor: "whitesmoke",
@@ -234,37 +235,48 @@ export default class Homepage extends Component {
                 borderRadius: "5px",
               }}
             >
-              <Checkbox
-                id={task.id}
-                checked={task.completed}
-                inputProps={{ "aria-label": "Mark task as completed" }}
-                value={task.id}
-                onChange={this.setCheckBoxState}
-              />
-              <Typography className="task_id" variant="h6">
-                {task.title}
-              </Typography>
-              <Button
-                variant="text"
-                onClick={() => {
-                  this.deleteTask(task.id);
-                }}
-                // startIcon={<DeleteIcon />}
-                sx={{
-                  color: "red",
-                }}
-              >
-                DELETE
-              </Button>
+              <Grid2 item>
+                <Checkbox
+                  id={task.id}
+                  checked={task.completed}
+                  inputProps={{ "aria-label": "Mark task as completed" }}
+                  value={task.id}
+                  onChange={this.setCheckBoxState}
+                />
+              </Grid2>
+              <Grid2 item sx={{ flexWrap: "wrap", textAlign: "start" }}>
+                <Typography className="task_id" variant="h6">
+                  {task.title}
+                </Typography>
+              </Grid2>
+              <Grid2 item sx={{ ml: "auto" }}>
+                <Button
+                  variant="text"
+                  onClick={() => {
+                    this.deleteTask(task.id);
+                  }}
+                  sx={{ color: "red" }}
+                >
+                  DELETE
+                </Button>
+              </Grid2>
             </Grid2>
           ))}
-          <Grid2 xs={12}>
+        </Grid2>
+
+        {/* container containing the tasks link. */}
+        <Grid2 container spacing={1} sx={{ width: "100%", height: "auto", justifyContent: 'space-between' }}>
+          <Grid2 xs={6}>
             <Typography component={Link} to="/tasks/active">
               View All Tasks
             </Typography>
+          </Grid2>
+          {/* <Grid2 xs={4}>
             <Typography component={Link} to="/tasks/active">
               All
             </Typography>
+          </Grid2> */}
+          <Grid2 xs={6}>
             <Typography component={Link} to="/tasks/completed">
               completed
             </Typography>
