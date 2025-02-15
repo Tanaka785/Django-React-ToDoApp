@@ -235,7 +235,7 @@ export default class Homepage extends Component {
                 borderRadius: "5px",
               }}
             >
-              <Grid2 item>
+              <Grid2>
                 <Checkbox
                   id={task.id}
                   checked={task.completed}
@@ -244,13 +244,13 @@ export default class Homepage extends Component {
                   onChange={this.setCheckBoxState}
                 />
               </Grid2>
-              <Grid2 item sx={{ flexWrap: "wrap", textAlign: "start" }}>
+              <Grid2 sx={{ flexWrap: "wrap", textAlign: "start" }}>
                 <Typography className="task_id" variant="h6">
                   {task.title}
                 </Typography>
               </Grid2>
-              <Grid2 item sx={{ ml: "auto" }}>
-                <Button variant="text" onClick={() => {}}>
+              <Grid2 sx={{ ml: "auto" }}>
+                <Button variant="text" component={Link} to={`/tasks/${task.id}/edit`}>
                   EDIT
                 </Button>
                 <Button
