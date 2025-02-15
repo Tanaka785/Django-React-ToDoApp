@@ -11,7 +11,7 @@ import React, { Component, useEffect, useState } from "react";
 function EditTaskPage() {
   const params = useParams();
   const [state, setState] = useState({
-    task: null,
+    taskObject: null,
     error: "",
   });
 
@@ -22,7 +22,7 @@ function EditTaskPage() {
         response = response.json().then((data) => {
           setState({
             ...state,
-            task: data,
+            taskObject: data,
           });
         });
       } else {
@@ -74,7 +74,7 @@ function EditTaskPage() {
               <TextField
                 required={true}
                 variant="standard"
-                defaultValue={state.task}
+                defaultValue={state.taskObject}
                 onChange={updateTaskField}
               ></TextField>
             </FormControl>
