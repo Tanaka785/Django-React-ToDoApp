@@ -96,30 +96,22 @@ export default class Homepage extends Component {
     fetch("/api/tasks")
       .then((response) => response.json())
       .then((data) => {
-        this.setState(
-          {
-            tasks: data,
-          },
-          () => {
-            this.state.tasks.forEach((task) => {
-              if (task.completed === true) {
-                // add task to completed tasks.
-                this.setState({
-                  ...this.state,
-                  completedTasks: this.state.completedTasks.concat(task),
-                });
-              } else {
-                // add task to active tasks.
-                this.setState({
-                  ...this.state,
-                  activeTasks: this.state.activeTasks.concat(task),
-                });
-              }
-            });
+        const completedTasks = [];
+        const activeTasks = [];
+        data.forEach((task) => {
+          if (task.completed === true) {
+            completedTasks.push(task);
+          } else {
+            activeTasks.push(task);
           }
-        );
-        // console.log(this.state.completedTasks);
-        // console.log(this.state.activeTasks);
+        });
+        // console.log("Active Tasks:", activeTasks); // Add this line
+        this.setState({
+          ...this.state,
+          tasks: data,
+          completedTasks,
+          activeTasks,
+        });
       });
   }
 
@@ -156,6 +148,7 @@ export default class Homepage extends Component {
         .then((response) => response.json())
         .then((result) => {
           // console.log(result);
+          this.componentDidMount();
         });
     }
   }
@@ -225,7 +218,7 @@ export default class Homepage extends Component {
 
         {/* container Grid for tasks. */}
         <Grid2 container spacing={1} sx={{ width: "100%", height: "auto" }}>
-          {this.state.tasks.slice(0, 3).map((task, index) => (
+          {this.state.activeTasks.slice(0, 3).map((task, index) => (
             <Grid2
               container
               key={task.id}
