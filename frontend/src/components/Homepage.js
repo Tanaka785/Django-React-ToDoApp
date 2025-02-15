@@ -34,7 +34,7 @@ export default class Homepage extends Component {
     this.updateTask = this.updateTask.bind(this);
     this.addNewTask = this.addNewTask.bind(this);
     this.setCheckBoxState = this.setCheckBoxState.bind(this);
-    this.markTaskAsCompleted = this.markTaskAsCompleted.bind(this);
+    this.updateTaskObject = this.updateTaskObject.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
   }
 
@@ -124,7 +124,7 @@ export default class Homepage extends Component {
       if (task.id === parseInt(taskId)) {
         task.completed = event.target.checked;
         {
-          this.markTaskAsCompleted(task);
+          this.updateTaskObject(task);
         }
       }
     });
@@ -134,7 +134,7 @@ export default class Homepage extends Component {
     });
   }
 
-  markTaskAsCompleted(task) {
+  updateTaskObject(task) {
     if (task.completed === true) {
       // update task through the backend.
       const requestOptions = {
