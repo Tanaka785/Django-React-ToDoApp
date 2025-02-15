@@ -13,6 +13,7 @@ function EditTaskPage() {
   const [state, setState] = useState({
     taskObject: null,
     error: "",
+    taskTitle: "",
   });
 
   // rerenders the component everytime it receives a new task.
@@ -36,10 +37,12 @@ function EditTaskPage() {
     });
   }, [params.taskId]);
 
+  console.log(state.taskTitle);
+
   const updateTaskField = () => {
     alert();
-  }
-  
+  };
+
   if (state.error) {
     return (
       <Grid2
