@@ -16,6 +16,7 @@ function EditTaskPage() {
     taskObject: null,
     error: "",
     taskTitle: "",
+    buttonVariant: disabled,
   });
 
   // rerenders the component everytime it receives a new task.
