@@ -1,21 +1,36 @@
 import { Typography, Grid2 } from "@mui/material";
 import React, { Component, useEffect, useState } from "react";
-import { getTasks } from "./utils";
+import * as utils from "./utils";
+
 import { Link } from "react-router-dom";
 
 function Tasks() {
   const [state, setState] = useState({
     title: "Active",
     tasks: [],
+    error: "",
   });
 
+  // get the tasks, and update state.
   useEffect(() => {
-    let data = getTasks();
-    setState({
-      ...state,
-      tasks: data,
-    })
-  }, [state.tasks])
+    const fetchTasks = async () => {
+      try {
+        const data = await utils.getTasks();
+        setState((prevState) => ({
+          ...prevState,
+          tasks: data,
+        }));
+        console.log(data);
+      } catch (error) {
+        setState((prevState) => ({
+          ...prevState,
+          error: "Error fetching tasks",
+        }));
+        console.error(error);
+      }
+    };
+    fetchTasks();
+  }, []);
 
   return (
     <Grid2 container spacing={1} direction={"column"} sx={{ width: "100%" }}>
