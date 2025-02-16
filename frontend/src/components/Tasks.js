@@ -39,19 +39,32 @@ function Tasks() {
         sx={{
           backgroundColor: "primary.main",
           paddingLeft: "15px",
-          paddingTop: '30px',
+          paddingTop: "30px",
           paddingBottom: "30px",
+          width: "100%",
+          justifyContent: "space-between",
         }}
       >
         <Typography variant="h4" sx={{ color: "white" }}>
           {state.title} Tasks
         </Typography>
-        {/* <Typography variant="h6" component={Link} to="/">
-          Completed Tasks
-        </Typography>
-        <Typography variant="h6" component={Link} to="/">
-          Home
-        </Typography> */}
+        <Grid2
+          sx={{
+            // border: "1px dotted white",
+            justifyContent: "space-between",
+          }}
+        >
+          <Grid2>
+            <Typography variant="h6" component={Link} to="/">
+              Completed
+            </Typography>
+          </Grid2>
+          <Grid2>
+            <Typography variant="h6" component={Link} to="/">
+              Home
+            </Typography>
+          </Grid2>
+        </Grid2>
       </Grid2>
       <Grid2 xs={12} sx={{ textAlign: "center" }}>
         {utils.arrangeTasks(state.tasks)}
