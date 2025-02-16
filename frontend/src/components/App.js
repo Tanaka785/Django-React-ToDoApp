@@ -14,13 +14,13 @@ function App() {
       lg={6}
       xl={6}
       sx={{
-        width: { xs: "100%", sm: "80%", md: "70%", lg: "55%" },
-        height: { xs: "80%", sm: "80%", md: "70%", lg: "70%" },
+        width: { xs: "100%", sm: "70%", md: "70%", lg: "55%" },
+        height: { xs: "80%", sm: "70%", md: "70%", lg: "70%" },
         border: "1px solid",
         borderColor: "primary.main",
         borderRadius: "4px",
         boxShadow: "0px 0px 14px rgba(119, 136, 153, 0.5)",
-        overflowY: 'auto',
+        overflowY: "auto",
       }}
     >
       <Homepage />
