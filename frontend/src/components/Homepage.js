@@ -241,7 +241,7 @@ export default class Homepage extends Component {
               component={Link}
               to="/tasks"
               sx={{ color: "primary.main" }}
-              state={{ type: "active" }}
+              state={{ type: "Active" }}
             >
               View All Tasks
             </Typography>
@@ -251,7 +251,7 @@ export default class Homepage extends Component {
               component={Link}
               to="/tasks"
               sx={{ color: "primary.main" }}
-              state={{ type: "completed" }}
+              state={{ type: "Completed" }}
             >
               completed
             </Typography>
