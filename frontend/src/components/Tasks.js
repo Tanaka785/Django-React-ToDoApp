@@ -36,8 +36,14 @@ function Tasks() {
   }, []);
 
   const updateHeading = () => {
-    alert();
+    const temp = state.activeTitle;
+    setState((prevState) => ({
+      ...prevState,
+      activeTitle: state.dullTitle,
+      dullTitle: temp,
+    }));
   };
+
   return (
     <Grid2 container spacing={1} direction={"column"} sx={{ width: "100%" }}>
       <Grid2
@@ -61,12 +67,7 @@ function Tasks() {
           }}
         >
           <Grid2>
-            <Typography
-              variant="h6"
-              component={Link}
-              to="/"
-              onClick={updateHeading}
-            >
+            <Typography variant="h6" component={Link} onClick={updateHeading}>
               {state.dullTitle}
             </Typography>
           </Grid2>
