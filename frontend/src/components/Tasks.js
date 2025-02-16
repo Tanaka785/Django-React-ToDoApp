@@ -57,7 +57,7 @@ function Tasks() {
         tasks: completedTasks,
       }));
     }
-  }, [state.activeTitle]);
+  }, []);
 
   const updateTasksList = (event) => {
     event.preventDefault();
