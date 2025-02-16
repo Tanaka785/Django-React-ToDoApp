@@ -6,7 +6,17 @@ import { Link } from "react-router-dom";
 function Tasks() {
   const [state, setState] = useState({
     title: "Active",
+    tasks: [],
   });
+
+  useEffect(() => {
+    let data = getTasks();
+    setState({
+      ...state,
+      tasks: data,
+    })
+  }, [state.tasks])
+
   return (
     <Grid2 container spacing={1} direction={"column"} sx={{ width: "100%" }}>
       <Grid2 xs={12} sx={{ textAlign: "center" }}>
