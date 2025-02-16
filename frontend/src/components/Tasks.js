@@ -19,9 +19,10 @@ function Tasks() {
     const fetchTasks = async () => {
       try {
         const data = await utils.getTasks();
+        const tasks = utils.filterTasks(data);
         setState((prevState) => ({
           ...prevState,
-          tasks: data,
+          tasks: tasks.activeTasks,
         }));
         // console.log(data);
       } catch (error) {
