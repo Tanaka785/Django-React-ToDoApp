@@ -2,11 +2,13 @@ import { Typography, Grid2, Checkbox, Button } from "@mui/material";
 import React, { Component, useEffect, useState } from "react";
 import * as utils from "./utils";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function Tasks() {
+  const location = useLocation();
+  const type = location.state?.type;
   const [state, setState] = useState({
-    activeTitle: "Active",
+    activeTitle: type,
     dullTitle: "",
     tasks: [],
     error: "",
