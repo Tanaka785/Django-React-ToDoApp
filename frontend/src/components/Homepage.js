@@ -97,15 +97,9 @@ export default class Homepage extends Component {
 
   async componentDidMount() {
     let data = await utils.getTasks();
-    const completedTasks = [];
-    const activeTasks = [];
-    data.forEach((task) => {
-      if (task.completed === true) {
-        completedTasks.push(task);
-      } else {
-        activeTasks.push(task);
-      }
-    });
+    const tasks = utils.filterTasks(data);
+    const completedTasks = tasks.completedTasks;
+    const activeTasks = tasks.activeTasks;
     this.setState({
       ...this.state,
       tasks: data,
