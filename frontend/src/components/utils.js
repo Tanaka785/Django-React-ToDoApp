@@ -33,7 +33,9 @@ export function arrangeTasks(tasks) {
           checked={task.completed}
           inputProps={{ "aria-label": "Mark task as completed" }}
           value={task.id}
-          onChange={() => {}}
+          onChange={() => {
+            alert("Wait for it!!");
+          }}
         />
       </Grid2>
       <Grid2 sx={{ flexWrap: "wrap", textAlign: "start" }}>
@@ -45,7 +47,13 @@ export function arrangeTasks(tasks) {
         <Button variant="text" component={Link} to={`/tasks/${task.id}/edit`}>
           EDIT
         </Button>
-        <Button variant="text" onClick={() => {}} sx={{ color: "red" }}>
+        <Button
+          variant="text"
+          onClick={() => {
+            alert("Wait for it!!");
+          }}
+          sx={{ color: "red" }}
+        >
           DELETE
         </Button>
       </Grid2>
