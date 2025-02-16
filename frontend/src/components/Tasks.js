@@ -6,7 +6,8 @@ import { Link } from "react-router-dom";
 
 function Tasks() {
   const [state, setState] = useState({
-    title: "Active",
+    activeTitle: "",
+    dullTitle: "",
     tasks: [],
     error: "",
   });
@@ -46,7 +47,7 @@ function Tasks() {
         }}
       >
         <Typography variant="h4" sx={{ color: "white" }}>
-          {state.title} Tasks
+          {state.activeTitle} Tasks
         </Typography>
         <Grid2
           sx={{
