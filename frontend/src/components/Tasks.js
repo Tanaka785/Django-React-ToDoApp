@@ -9,7 +9,7 @@ function Tasks() {
   const type = location.state?.type;
   const [state, setState] = useState({
     activeTitle: type,
-    dullTitle: "",
+    dullTitle: type === "Active" ? "Completed" : "Active",
     tasks: [],
     error: "",
   });
@@ -35,6 +35,9 @@ function Tasks() {
     fetchTasks();
   }, []);
 
+  const updateHeading = () => {
+    alert();
+  };
   return (
     <Grid2 container spacing={1} direction={"column"} sx={{ width: "100%" }}>
       <Grid2
@@ -58,8 +61,13 @@ function Tasks() {
           }}
         >
           <Grid2>
-            <Typography variant="h6" component={Link} to="/">
-              Completed
+            <Typography
+              variant="h6"
+              component={Link}
+              to="/"
+              onClick={updateHeading}
+            >
+              {state.dullTitle}
             </Typography>
           </Grid2>
           <Grid2>
@@ -72,11 +80,6 @@ function Tasks() {
       <Grid2 xs={12} sx={{ textAlign: "center" }}>
         {utils.arrangeTasks(state.tasks)}
       </Grid2>
-      {/* <Grid2 xs={12} sx={{ textAlign: "center" }}>
-        <Typography variant="h6" component={Link} to="/">
-          Home
-        </Typography>
-      </Grid2> */}
     </Grid2>
   );
 }
