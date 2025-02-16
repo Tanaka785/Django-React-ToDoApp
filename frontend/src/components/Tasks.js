@@ -7,23 +7,25 @@ import { Link, useLocation } from "react-router-dom";
 function Tasks() {
   const location = useLocation();
   const type = location.state?.type;
+  // console.log(type);
   const [state, setState] = useState({
     activeTitle: type,
     dullTitle: type === "Active" ? "Completed" : "Active",
     tasks: [],
     error: "",
   });
-
+  // console.log(state.type);
   const fetchTasks = async () => {
     try {
       const data = await utils.getTasks();
       const tasks = utils.filterTasks(data);
+      // console.log(tasks);
       setState((prevState) => ({
         ...prevState,
         tasks:
           state.activeTitle === "Active"
-            ? tasks.completedTasks
-            : tasks.activeTasks,
+            ? tasks.activeTasks
+            : tasks.completedTasks,
       }));
       // console.log(data);
     } catch (error) {
@@ -37,7 +39,8 @@ function Tasks() {
   // get the tasks, and update state.
   useEffect(() => {
     fetchTasks();
-  }, []);
+    // console.log(state.tasks);
+  }, [state.tasks]);
 
   useEffect(() => {
     const tasks = utils.filterTasks(state.tasks);
