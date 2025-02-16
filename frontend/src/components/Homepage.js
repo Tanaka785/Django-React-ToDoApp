@@ -20,7 +20,12 @@ import {
 } from "@mui/material";
 import Tasks from "./Tasks";
 import EditTaskPage from "./EditTaskPage";
-import { getTasks } from "./utils";
+import {
+  getTasks,
+  arrangeTasks,
+  checkboxStateControl,
+  taskUpdate,
+} from "./utils";
 
 export default class Homepage extends Component {
   constructor(props) {
