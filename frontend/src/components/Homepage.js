@@ -20,6 +20,7 @@ import {
 } from "@mui/material";
 import Tasks from "./Tasks";
 import EditTaskPage from "./EditTaskPage";
+import { getTasks } from "./utils";
 
 export default class Homepage extends Component {
   constructor(props) {
@@ -94,28 +95,23 @@ export default class Homepage extends Component {
       });
   }
 
-  // get all the tasks
   async componentDidMount() {
-    fetch("/api/tasks")
-      .then((response) => response.json())
-      .then((data) => {
-        const completedTasks = [];
-        const activeTasks = [];
-        data.forEach((task) => {
-          if (task.completed === true) {
-            completedTasks.push(task);
-          } else {
-            activeTasks.push(task);
-          }
-        });
-        // console.log("Active Tasks:", activeTasks); // Add this line
-        this.setState({
-          ...this.state,
-          tasks: data,
-          completedTasks,
-          activeTasks,
-        });
-      });
+    let data = await getTasks();
+    const completedTasks = [];
+    const activeTasks = [];
+    data.forEach((task) => {
+      if (task.completed === true) {
+        completedTasks.push(task);
+      } else {
+        activeTasks.push(task);
+      }
+    });
+    this.setState({
+      ...this.state,
+      tasks: data,
+      completedTasks,
+      activeTasks,
+    });
   }
 
   setCheckBoxState(event) {
