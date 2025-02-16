@@ -1,5 +1,5 @@
 import { Typography, Grid2 } from "@mui/material";
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import { getTasks } from "./utils";
 import { Link } from "react-router-dom";
 
@@ -10,7 +10,7 @@ export default class Tasks extends Component {
           title: "Active",
       }
   }
-
+  
   render() {
     return (
       <Grid2 container spacing={1} direction={"column"} sx={{ width: "100%" }}>
