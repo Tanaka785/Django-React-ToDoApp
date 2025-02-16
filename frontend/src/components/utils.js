@@ -33,9 +33,7 @@ export function arrangeTasks(tasks) {
           checked={task.completed}
           inputProps={{ "aria-label": "Mark task as completed" }}
           value={task.id}
-          onChange={() => {
-            alert("Wait for it!!");
-          }}
+          onChange={this.setCheckBoxState}
         />
       </Grid2>
       <Grid2 sx={{ flexWrap: "wrap", textAlign: "start" }}>
@@ -71,6 +69,6 @@ export function deleteTask(task) {
   confirm("We are here now!")
 }
 
-export function markTaskAsCompleted() {
-  confirm();
+export function handleCheckboxChange(event, tasks) {
+  alert(tasks);
 }
