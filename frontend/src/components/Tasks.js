@@ -96,12 +96,22 @@ function Tasks() {
           }}
         >
           <Grid2>
-            <Typography variant="h6" component={Link} onClick={updateTasksList}>
+            <Typography
+              variant="h6"
+              component={Link}
+              onClick={updateTasksList}
+              sx={{ color: "black", textDecoration: "underline dashed white" }}
+            >
               {state.dullTitle}
             </Typography>
           </Grid2>
           <Grid2>
-            <Typography variant="h6" component={Link} to="/">
+            <Typography
+              variant="h6"
+              component={Link}
+              to="/"
+              sx={{ color: "black", textDecoration: "underline dashed white" }}
+            >
               Home
             </Typography>
           </Grid2>
