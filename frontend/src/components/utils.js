@@ -66,3 +66,11 @@ export function filterTasks(tasks) {
   const completedTasks = tasks.filter((task) => task.completed);
   return { activeTasks, completedTasks };
 }
+
+export function deleteTask(task) {
+  confirm("We are here now!")
+}
+
+export function markTaskAsCompleted() {
+  confirm();
+}
