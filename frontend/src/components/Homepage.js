@@ -293,7 +293,7 @@ export default class Homepage extends Component {
           <Grid2 xs={6}>
             <Typography
               component={Link}
-              to="/tasks/active"
+              to="/tasks"
               sx={{ color: "primary.main" }}
             >
               View All Tasks
@@ -302,7 +302,7 @@ export default class Homepage extends Component {
           <Grid2 xs={6}>
             <Typography
               component={Link}
-              to="/tasks/completed"
+              to="/tasks"
               sx={{ color: "primary.main" }}
             >
               completed
@@ -318,7 +318,7 @@ export default class Homepage extends Component {
       <Router>
         <Routes>
           <Route path="/" element={<this.renderHomepage />} />
-          <Route path="/tasks/active" element={<Tasks />} />
+          <Route path="/tasks" element={<Tasks />} />
           <Route path="/tasks/:taskId/edit" element={<EditTaskPage />} />
         </Routes>
       </Router>
