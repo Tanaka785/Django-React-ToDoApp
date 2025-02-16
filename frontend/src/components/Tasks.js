@@ -35,7 +35,7 @@ function Tasks() {
   return (
     <Grid2 container spacing={1} direction={"column"} sx={{ width: "100%" }}>
       <Grid2 xs={12} sx={{ textAlign: "center" }}>
-        <Typography variant="h4">{state.title}</Typography>
+        <Typography variant="h4">{state.title} Tasks</Typography>
       </Grid2>
       <Grid2 xs={12} sx={{ textAlign: "center" }}>
         <Typography variant="h6" component={Link} to="/">
