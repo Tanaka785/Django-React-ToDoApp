@@ -14,7 +14,7 @@ function App() {
       lg={6}
       xl={6}
       sx={{
-        width: { xs: "100%", sm: "100%", md: "70%", lg: "55%" },
+        width: { xs: "100%", sm: "80%", md: "70%", lg: "55%" },
         height: { xs: "80%", sm: "80%", md: "70%", lg: "70%" },
         border: "1px solid",
         borderColor: "primary.main",
