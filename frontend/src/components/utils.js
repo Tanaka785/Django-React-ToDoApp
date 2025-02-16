@@ -52,3 +52,9 @@ export function arrangeTasks(tasks) {
     </Grid2>
   ));
 }
+
+export function filterTasks(tasks) {
+  const activeTasks = tasks.filter((task) => !task.completed);
+  const completedTasks = tasks.filter((task) => task.completed);
+  return { activeTasks, completedTasks };
+}
