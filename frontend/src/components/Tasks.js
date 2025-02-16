@@ -20,7 +20,7 @@ function Tasks() {
           ...prevState,
           tasks: data,
         }));
-        console.log(data);
+        // console.log(data);
       } catch (error) {
         setState((prevState) => ({
           ...prevState,
@@ -31,7 +31,7 @@ function Tasks() {
     };
     fetchTasks();
   }, []);
-
+  console.log(state.tasks);
   return (
     <Grid2 container spacing={1} direction={"column"} sx={{ width: "100%" }}>
       <Grid2 xs={12} sx={{ textAlign: "center" }}>
