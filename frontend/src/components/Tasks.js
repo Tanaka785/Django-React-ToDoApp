@@ -35,13 +35,31 @@ function Tasks() {
     fetchTasks();
   }, []);
 
-  const updateTasksList = () => {
+  const updateTasksList = (event) => {
+    // prevent link's default behaviour.
+    event.preventDefault();
+    // first update the heading.
     const temp = state.activeTitle;
     setState((prevState) => ({
       ...prevState,
       activeTitle: state.dullTitle,
       dullTitle: temp,
     }));
+    // and then update the displayed tasks.
+    const tasks = utils.filterTasks(state.tasks);
+    state.activeTitle === "Active"
+      ? setState(
+          (prevState = {
+            ...prevState,
+            tasks: tasks.activeTasks,
+          })
+        )
+      : setState(
+          (prevState = {
+            ...prevState,
+            tasks: tasks.completedTasks,
+          })
+        );
   };
 
   return (
