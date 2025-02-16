@@ -35,31 +35,27 @@ function Tasks() {
     fetchTasks();
   }, []);
 
-  const updateTasksList = (event) => {
-    // prevent link's default behaviour.
-    event.preventDefault();
-    // first update the heading.
-    const temp = state.activeTitle;
+  useEffect(() => {
+    const filteredTasks =
+      state.activeTitle === "Active"
+        ? utils.filterTasks(state.tasks).activeTasks
+        : utils.filterTasks(state.tasks).completedTasks;
+
     setState((prevState) => ({
       ...prevState,
-      activeTitle: state.dullTitle,
-      dullTitle: temp,
+      tasks: filteredTasks,
     }));
-    // and then update the displayed tasks.
-    const tasks = utils.filterTasks(state.tasks);
-    state.activeTitle === "Active"
-      ? setState(
-          (prevState = {
-            ...prevState,
-            tasks: tasks.activeTasks,
-          })
-        )
-      : setState(
-          (prevState = {
-            ...prevState,
-            tasks: tasks.completedTasks,
-          })
-        );
+  }, [state.activeTitle]); // Dependency array makes sure this runs when activeTitle changes.
+
+  const updateTasksList = (event) => {
+    event.preventDefault();
+    // Swap the titles without using useEffect here
+    const tempTitle = state.activeTitle;
+    setState((prevState) => ({
+      ...prevState,
+      activeTitle: prevState.dullTitle,
+      dullTitle: tempTitle,
+    }));
   };
 
   return (
