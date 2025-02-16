@@ -35,7 +35,7 @@ function Tasks() {
     fetchTasks();
   }, []);
 
-  const updateHeading = () => {
+  const updateTasksList = () => {
     const temp = state.activeTitle;
     setState((prevState) => ({
       ...prevState,
@@ -67,7 +67,7 @@ function Tasks() {
           }}
         >
           <Grid2>
-            <Typography variant="h6" component={Link} onClick={updateHeading}>
+            <Typography variant="h6" component={Link} onClick={updateTasksList}>
               {state.dullTitle}
             </Typography>
           </Grid2>
