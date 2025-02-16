@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 function Tasks() {
   const [state, setState] = useState({
-    activeTitle: "",
+    activeTitle: "Active",
     dullTitle: "",
     tasks: [],
     error: "",
