@@ -1,5 +1,5 @@
 import { Typography, Grid2, Checkbox, Button } from "@mui/material";
-import React, { Component, useEffect, useState } from "react";
+import React, { Component, act, useEffect, useState } from "react";
 import * as utils from "./utils";
 
 import { Link, useLocation } from "react-router-dom";
@@ -14,49 +14,60 @@ function Tasks() {
     error: "",
   });
 
+  const fetchTasks = async () => {
+    try {
+      const data = await utils.getTasks();
+      const tasks = utils.filterTasks(data);
+      setState((prevState) => ({
+        ...prevState,
+        tasks:
+          state.activeTitle === "Active"
+            ? tasks.completedTasks
+            : tasks.activeTasks,
+      }));
+      // console.log(data);
+    } catch (error) {
+      setState((prevState) => ({
+        ...prevState,
+        error: "Error fetching tasks",
+      }));
+      console.error(error);
+    }
+  };
   // get the tasks, and update state.
   useEffect(() => {
-    const fetchTasks = async () => {
-      try {
-        const data = await utils.getTasks();
-        const tasks = utils.filterTasks(data);
-        setState((prevState) => ({
-          ...prevState,
-          tasks: tasks.activeTasks,
-        }));
-        // console.log(data);
-      } catch (error) {
-        setState((prevState) => ({
-          ...prevState,
-          error: "Error fetching tasks",
-        }));
-        console.error(error);
-      }
-    };
     fetchTasks();
   }, []);
 
   useEffect(() => {
-    const filteredTasks =
-      state.activeTitle === "Active"
-        ? utils.filterTasks(state.tasks).activeTasks
-        : utils.filterTasks(state.tasks).completedTasks;
-
-    setState((prevState) => ({
-      ...prevState,
-      tasks: filteredTasks,
-    }));
-  }, [state.activeTitle]); // Dependency array makes sure this runs when activeTitle changes.
+    const tasks = utils.filterTasks(state.tasks);
+    const activeTasks = tasks.activeTasks;
+    const completedTasks = tasks.completedTasks;
+    if (state.activeTitle === "Active") {
+      setState((prevState) => ({
+        ...prevState,
+        tasks: activeTasks,
+      }));
+    } else {
+      setState((prevState) => ({
+        ...prevState,
+        tasks: completedTasks,
+      }));
+    }
+  }, [state.activeTitle]);
 
   const updateTasksList = (event) => {
     event.preventDefault();
     // Swap the titles without using useEffect here
     const tempTitle = state.activeTitle;
+    const tasks = utils.filterTasks(state.tasks);
     setState((prevState) => ({
       ...prevState,
       activeTitle: prevState.dullTitle,
       dullTitle: tempTitle,
+      tasks: tasks.activeTasks,
     }));
+    fetchTasks();
   };
 
   return (
