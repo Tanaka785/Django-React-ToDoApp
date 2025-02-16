@@ -34,19 +34,33 @@ function Tasks() {
 
   return (
     <Grid2 container spacing={1} direction={"column"} sx={{ width: "100%" }}>
-      <Grid2 xs={12} sx={{ backgroundColor: "primary.main", padding: "10px" }}>
+      <Grid2
+        xs={12}
+        sx={{
+          backgroundColor: "primary.main",
+          paddingLeft: "15px",
+          paddingTop: '30px',
+          paddingBottom: "30px",
+        }}
+      >
         <Typography variant="h4" sx={{ color: "white" }}>
           {state.title} Tasks
         </Typography>
+        {/* <Typography variant="h6" component={Link} to="/">
+          Completed Tasks
+        </Typography>
+        <Typography variant="h6" component={Link} to="/">
+          Home
+        </Typography> */}
       </Grid2>
       <Grid2 xs={12} sx={{ textAlign: "center" }}>
         {utils.arrangeTasks(state.tasks)}
       </Grid2>
-      <Grid2 xs={12} sx={{ textAlign: "center" }}>
+      {/* <Grid2 xs={12} sx={{ textAlign: "center" }}>
         <Typography variant="h6" component={Link} to="/">
           Home
         </Typography>
-      </Grid2>
+      </Grid2> */}
     </Grid2>
   );
 }
