@@ -233,6 +233,7 @@ export default class Homepage extends Component {
           <Grid2 xs={6}>
             <Typography
               component={Link}
+              className="home-links"
               to="/tasks"
               sx={{ color: "primary.main" }}
               state={{ type: "Active" }}
@@ -243,6 +244,7 @@ export default class Homepage extends Component {
           <Grid2 xs={6}>
             <Typography
               component={Link}
+              className="home-links"
               to="/tasks"
               sx={{ color: "primary.main" }}
               state={{ type: "Completed" }}
