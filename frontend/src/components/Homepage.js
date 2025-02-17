@@ -206,7 +206,7 @@ export default class Homepage extends Component {
               <Button
                 variant="contained"
                 color="primary"
-                sx={{ height: "54px", width: "100%" }}
+                sx={{ height: "54px", width: "100%", marginBottom: "5px" }}
                 onClick={this.addNewTask}
               >
                 Add Task
