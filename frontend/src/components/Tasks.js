@@ -123,7 +123,7 @@ function Tasks() {
         </Grid2>
       </Grid2>
       <Grid2 xs={12} sx={{ textAlign: "center" }}>
-        {state.tasks.slice(0, 3).map((task, index) => (
+        {state.tasks.map((task, index) => (
           <Grid2
             container
             key={task.id}
