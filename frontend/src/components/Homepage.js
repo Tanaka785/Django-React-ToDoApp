@@ -237,7 +237,7 @@ export default class Homepage extends Component {
               sx={{ color: "primary.main" }}
               state={{ type: "Active" }}
             >
-              View All Tasks
+              View All
             </Typography>
           </Grid2>
           <Grid2 xs={6}>
