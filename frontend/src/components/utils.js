@@ -16,21 +16,20 @@ export function filterTasks(tasks) {
 }
 
 export function updateTask(task) {
-  if (task.completed === true) {
-    // update task through the backend.
-    const requestOptions = {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        id: parseInt(task.id),
-        completed: true,
-        title: task.title,
-      }),
-    };
-    return fetch(`/api/update-task`, requestOptions)
-      .then((response) => response.json())
-      .then((result) => result);
-  }
+  const taskStatus = task.completed;
+  // update task through the backend.
+  const requestOptions = {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      id: parseInt(task.id),
+      completed: taskStatus,
+      title: task.title,
+    }),
+  };
+  return fetch(`/api/update-task`, requestOptions)
+    .then((response) => response.json())
+    .then((result) => result);
 }
 
 export async function deleteTask(taskId) {
