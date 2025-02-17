@@ -15,10 +15,6 @@ export function filterTasks(tasks) {
   return { activeTasks, completedTasks };
 }
 
-export function deleteTask(task) {
-  confirm("We are here now!");
-}
-
 export function updateTask(task) {
   if (task.completed === true) {
     // update task through the backend.
@@ -35,4 +31,17 @@ export function updateTask(task) {
       .then((response) => response.json())
       .then((result) => result);
   }
+}
+
+export async function deleteTask(taskId) {
+  const requestOptions = {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      id: parseInt(taskId),
+    }),
+  };
+  return fetch(`/api/delete/${taskId}`, requestOptions)
+    .then((response) => response.json())
+    .then((data) => data);
 }

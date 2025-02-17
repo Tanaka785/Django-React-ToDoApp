@@ -31,6 +31,10 @@ function Tasks() {
     });
   };
 
+  const deleteTask = async (taskId) => {
+    let data = await utils.deleteTask(taskId);
+  };
+
   const fetchTasks = async () => {
     try {
       const data = await utils.getTasks();
@@ -177,7 +181,13 @@ function Tasks() {
               >
                 EDIT
               </Button>
-              <Button variant="text" onClick={() => {}} sx={{ color: "red" }}>
+              <Button
+                variant="text"
+                onClick={() => {
+                  deleteTask(task.id);
+                }}
+                sx={{ color: "red" }}
+              >
                 DELETE
               </Button>
             </Grid2>

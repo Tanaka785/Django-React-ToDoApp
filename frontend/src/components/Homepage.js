@@ -79,20 +79,9 @@ export default class Homepage extends Component {
   }
 
   // handles the deletion of a task.
-  deleteTask(taskId) {
-    const requestOptions = {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        id: parseInt(taskId),
-      }),
-    };
-    fetch(`/api/delete/${taskId}`, requestOptions)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        this.componentDidMount();
-      });
+  async deleteTask(taskId) {
+    let data = await utils.deleteTask(taskId);
+    this.componentDidMount();
   }
 
   async componentDidMount() {
@@ -239,7 +228,13 @@ export default class Homepage extends Component {
                 >
                   EDIT
                 </Button>
-                <Button variant="text" onClick={() => {}} sx={{ color: "red" }}>
+                <Button
+                  variant="text"
+                  onClick={() => {
+                    this.deleteTask(task.id);
+                  }}
+                  sx={{ color: "red" }}
+                >
                   DELETE
                 </Button>
               </Grid2>
