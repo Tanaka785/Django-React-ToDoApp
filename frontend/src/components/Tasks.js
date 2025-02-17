@@ -101,7 +101,7 @@ function Tasks() {
               component={Link}
               onClick={updateTasksList}
               className="links"
-              sx={{ color: "black", textDecoration: "underline dashed white" }}
+              sx={{ color: "black", textDecoration: "underline solid white" }}
             >
               {state.dullTitle}
             </Typography>
@@ -114,7 +114,7 @@ function Tasks() {
               className="links"
               sx={{
                 color: "black",
-                textDecoration: "underline dashed white",
+                textDecoration: "underline solid white",
               }}
             >
               Home
