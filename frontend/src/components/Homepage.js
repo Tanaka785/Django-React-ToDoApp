@@ -125,25 +125,9 @@ export default class Homepage extends Component {
     });
   }
 
-  updateTaskObject(task) {
-    if (task.completed === true) {
-      // update task through the backend.
-      const requestOptions = {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          id: parseInt(task.id),
-          completed: true,
-          title: task.title,
-        }),
-      };
-      fetch(`/api/update-task`, requestOptions)
-        .then((response) => response.json())
-        .then((result) => {
-          // console.log(result);
-          this.componentDidMount();
-        });
-    }
+  async updateTaskObject(task) {
+    let data = await utils.updateTask(task);
+    this.componentDidMount();
   }
 
   renderHomepage() {
@@ -255,13 +239,7 @@ export default class Homepage extends Component {
                 >
                   EDIT
                 </Button>
-                <Button
-                  variant="text"
-                  onClick={() => {
-                    this.deleteTask(task.id);
-                  }}
-                  sx={{ color: "red" }}
-                >
+                <Button variant="text" onClick={() => {}} sx={{ color: "red" }}>
                   DELETE
                 </Button>
               </Grid2>

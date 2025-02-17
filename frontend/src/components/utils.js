@@ -19,6 +19,20 @@ export function deleteTask(task) {
   confirm("We are here now!");
 }
 
-export function handleCheckboxChange(event, tasks) {
-  alert(tasks);
+export function updateTask(task) {
+  if (task.completed === true) {
+    // update task through the backend.
+    const requestOptions = {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        id: parseInt(task.id),
+        completed: true,
+        title: task.title,
+      }),
+    };
+    return fetch(`/api/update-task`, requestOptions)
+      .then((response) => response.json())
+      .then((result) => result);
+  }
 }

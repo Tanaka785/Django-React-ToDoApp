@@ -15,6 +15,22 @@ function Tasks() {
     error: "",
   });
   // console.log(state.type);
+
+  const setCheckBoxState = (event) => {
+    const taskId = event.target.value;
+    let updatedTasks = state.tasks;
+    updatedTasks.forEach((task) => {
+      if (task.id === parseInt(taskId)) {
+        task.completed = event.target.checked;
+        utils.updateTask(task);
+      }
+    });
+    setState({
+      ...state,
+      tasks: updatedTasks,
+    });
+  };
+
   const fetchTasks = async () => {
     try {
       const data = await utils.getTasks();
@@ -145,7 +161,7 @@ function Tasks() {
                 checked={task.completed}
                 inputProps={{ "aria-label": "Mark task as completed" }}
                 value={task.id}
-                onChange={() => {}}
+                onChange={setCheckBoxState}
               />
             </Grid2>
             <Grid2 sx={{ flexWrap: "wrap", textAlign: "start" }}>
