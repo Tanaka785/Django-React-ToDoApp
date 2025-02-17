@@ -22,6 +22,10 @@ html, body {
 }
 
 .links:hover {
-    color: white;
     text-decoration: none;
+}
+
+.links:hover, .home-links:hover {
+    text-decoration: none;
+    font-size: 14px;
 }
