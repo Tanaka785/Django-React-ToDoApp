@@ -24,7 +24,7 @@ class CreateTask(APIView):
             # create the task.
             task = Task(title=task)
             task.save()
-            return Response(TaskSerializer(task).data, status=status.HTTP_200_OK)
+            return Response(TaskSerializer(task).data, status=status.HTTP_201_CREATED)
         else: 
             return Response({'Bad Request': 'Invalid Task'}, status=status.HTTP_400_BAD_REQUEST)
 
