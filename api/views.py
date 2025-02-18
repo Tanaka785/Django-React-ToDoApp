@@ -50,7 +50,7 @@ class UpdateTask(APIView):
                 task.title = title
                 task.completed = completed 
                 task.save(update_fields=['completed', 'title'])
-                return Response({'Task Updated': 'Task was updated successfully'}, status=status.HTTP_200_OK)
+                return Response({'Task Updated': 'Task was updated successfully'}, status=status.HTTP_204_NO_CONTENT)
             return Response({'Bad Request': 'Invalid task id passed.'}, status=status.HTTP_404_NOT_FOUND)
         return Response({'Bad Request': 'Invalid data passed.'}, status=status.HTTP_400_BAD_REQUEST)
 
