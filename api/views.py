@@ -66,7 +66,7 @@ class DeleteTask(APIView):
             return Response({'Bad Request': 'Task object with the provided ID does not exist...'}, status=status.HTTP_400_BAD_REQUEST)
         else:
             task.delete()
-            return Response({'response': 'Task deleted Successfully'}, status=status.HTTP_200_OK)
+            return Response({'response': 'Task deleted Successfully'}, status=status.HTTP_204_NO_CONTENT)
     
 
 class GetTask(APIView):
